@@ -1,0 +1,26 @@
+<div class="modal-wrapper" (click)="this.modalService.hideModal()">
+    <div class="modal-frame" click-stop-propagation>
+        <nav class="modal-nav modal-nav-top">
+                <a (click)="this.modalService.hideModal()" class="close">
+                    <i class="material-icons">clear</i>
+                </a>
+                <!--
+                <a (click)="this.modalService.hideModal()" class="back">
+                    <i class="material-icons">navigate_before</i>
+                </a>
+                -->
+        </nav>
+        <article>
+
+            <div class="modal-content" *ngIf="this.modalService?.displayModal && this.modalService?.modalType" [ngSwitch]="this.modalService.modalType">
+                    <app-modal-lesson *ngSwitchCase="'lesson'" [course_id]="this.modalService?.parentId" [lesson_id]="this.modalService?.selfId" [mode]="this.modalService?.modalMode" ></app-modal-lesson>
+                    <app-modal-task *ngSwitchCase="'task'" [lesson_id]="this.modalService?.parentId" [task_id]="this.modalService?.selfId" [mode]="this.modalService?.modalMode" ></app-modal-task>
+                    <app-modal-task-content *ngSwitchCase="'task-content'" [task_id]="this.modalService?.parentId" [type_id]="this.modalService?.selfId" [mode]="this.modalService?.modalMode" ></app-modal-task-content>
+                    <app-modal-language *ngSwitchCase="'language'" [country_code]="this.modalService?.parentId" [mode]="this.modalService?.modalMode" ></app-modal-language>
+                    <app-modal-task-attr-version *ngSwitchCase="'task-attr-version'" [content_id]="this.modalService?.parentId"></app-modal-task-attr-version>
+                    <app-modal-media *ngSwitchCase="'media'" [media]="this.modalService?.parentId" [mode]="this.modalService?.modalMode"></app-modal-media>
+                    <app-modal-dictionary *ngSwitchCase="'dictionary'" [task_id]="this.modalService?.parentId" [mode]="this.modalService?.modalMode"></app-modal-dictionary>
+            </div>
+        </article>
+    </div>
+</div>

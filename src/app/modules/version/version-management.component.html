@@ -1,0 +1,27 @@
+<div class="master-div">
+    <h1 class="header" style="clear:both">Version</h1>
+    <form novalidate [formGroup]="versionForm" #thisForm (submit)="onSubmit(versionForm.value)">
+      <div class="container" >
+          <!-- type_id -->
+          <!-- <div>
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Id*" formControlName="id" >
+            </mat-form-field>
+          </div> -->
+          <div>
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Name*" formControlName="name" >
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Code*" formControlName="code" >
+            </mat-form-field>
+          </div>
+      </div>
+      <div class='buttons footer'>
+          <input type="submit" id="btnSubmit" value="Submit" [disabled]="!this.versionForm.valid" />.
+          <input type="button" id="btnReset" value="Cancel" (click)="onReset()" />
+      </div>
+    </form>
+</div>

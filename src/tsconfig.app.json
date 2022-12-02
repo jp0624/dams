@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.json",
+  "compileOnSave": true,
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "baseUrl": "./",
+    "lib": ["es6", "dom"],
+    "mapRoot": "./",
+    "module": "es6",
+    "types": []
+  },
+  "exclude": [
+    "node_modules/*",
+    "test.ts",
+    "**/*.spec.ts"
+  ]
+}

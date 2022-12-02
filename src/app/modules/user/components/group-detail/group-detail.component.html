@@ -1,0 +1,31 @@
+<!-- 
+    - group_id
+    - name
+    - description
+-->
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  
+  <nav class="nav-component nav-component-top">
+    <button type="submit" class="btn btn-save" [disabled]="form.invalid">
+        <span>Save Changes</span>
+    </button>
+  </nav>
+
+  <h1>Group Details</h1>
+  <ng-container *ngIf="this?.group">
+    <app-group-detail-form
+        [group]="this?.group"
+        [class]="'component component-form'"
+        [parent]="form">
+    </app-group-detail-form>
+  </ng-container>
+
+  <pre>{{ form.value | json }}</pre>
+
+  <nav class="nav-component">
+    <button type="submit" class="btn btn-save">
+        <span>Save Changes</span>
+    </button>
+  </nav>
+</form>

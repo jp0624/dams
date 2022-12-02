@@ -1,0 +1,50 @@
+<style>
+  h1 {
+    font-weight: bold !important;
+    margin-bottom: 17px;
+  }
+  input[type="submit"]{ 
+    text-align: center;
+    width: 200px;
+    border-radius: 4px;
+    background: green;
+    color: white;
+    font-size: 20px;    
+  }
+  .iconandtitle {
+    font-size: 26px;
+    color: black;
+    background: lightgray;
+    border-radius: 6px;
+    padding: 4px;
+  }
+  .iconandtitle>span {
+    font-size: 15px;
+    position: relative;
+    top: -5px;
+    padding-left: 10px;
+    font-weight: bold;
+    text-transform: capitalize;
+    display: inline-block;
+  }
+  .width-style {
+    width: 100%;
+  }
+</style>
+<h1>Variation Selection</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" novalidate>
+  <ng-template ngFor let-item [ngForOf]="versionlist" let-currentIndex="index" >
+    <div class="iconandtitle">
+      <i class="material-icons">{{item?.icon}}</i>
+      <span>{{item?.name}}</span>
+    </div>
+    <div>
+      <mat-form-field class="width-style">  
+        <textarea [formControlName]="item?.version_id" [id]="item?.version_id" title="{{item?.name}}" matInput placeholder="Enter {{item?.name}} version value"></textarea>
+      </mat-form-field>
+    </div>
+  </ng-template>
+  <div>
+    <input type="submit" value="submit" />
+  </div>
+</form>

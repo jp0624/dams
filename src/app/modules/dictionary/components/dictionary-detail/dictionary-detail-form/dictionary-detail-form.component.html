@@ -1,0 +1,28 @@
+<!--
+    - term_id
+    - selector
+    - term
+-->
+
+<!-- {{ this?.language | json }} -->
+
+<div [formGroup]="parent">
+  <!-- <ul formGroupName="term" class="form form-standard" [ngClass]="{  'hasData': language}"> -->
+  <ul formGroupName="term" class="form form-standard">
+    <input
+      type="hidden"
+      formControlName="term_id">
+    <li>
+      <label>Term:</label>
+      <input
+          type="text"
+          formControlName="term" required>
+    </li>
+    <li>
+      <label>Selector:</label>
+      <input
+          type="text"
+          formControlName="selector" required>
+    </li>
+  </ul>
+</div>

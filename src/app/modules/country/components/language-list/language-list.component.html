@@ -1,0 +1,8 @@
+
+  <ul class="langs-avail">
+    <li *ngFor="let lang of countryLanguages;" class="lang-avail">
+      <a routerLink="/language/{{ lang.language_id }}" routerLinkActive="active" class="lang-link">
+          <span>{{ lang.name }}</span>
+      </a>
+    </li>
+  </ul>

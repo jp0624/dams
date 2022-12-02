@@ -1,0 +1,21 @@
+<h1>Version</h1>
+<div>
+  <button mat-fab style="float: right; margin-bottom:15px; cursor: pointer;z-index: 1;" (click)="addVersion()">
+      <mat-icon style="font-size:24px;" aria-label="Button to add a new task">add</mat-icon>
+  </button>
+</div>
+<div id="Version">
+  <p-dataTable [immutable]=false [value]="this?.versions" [rows]="20" [paginator]="true" [pageLinks]="3" 
+    [rowsPerPageOptions]="[5,10,20]" 
+    (onRowSelect)="onRowSelect($event)" 
+    selectionMode="single">
+    <p-column [style]="{'width':'75px'}" [styleClass]="'small-col'" field="id" header="Id" [sortable]="true" [filter]="true"></p-column>
+    <p-column field="name" header="Name" [sortable]="true" [filter]="true"></p-column>
+    <p-column field="code" header="Code" [sortable]="true" [filter]="true"></p-column>
+    <p-column>
+      <ng-template pTemplate="body" let-taskType="rowData">
+        <i class="material-icons" (click)='deleteLink(taskType.id)'>delete</i>
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+</div>

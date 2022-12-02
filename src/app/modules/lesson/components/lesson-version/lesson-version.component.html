@@ -1,0 +1,9 @@
+    <h1>Lesson Versions</h1>
+
+    <app-dynamicTable
+      *ngIf="this.lessonService?.lessonSelectedVersionsList"
+      [attr.db-table]="lesson_versions"
+      [data]="this.lessonService?.lessonSelectedVersionsList"
+      [primary]="'version_id'"
+      [section]="'lesson'">
+    </app-dynamicTable>

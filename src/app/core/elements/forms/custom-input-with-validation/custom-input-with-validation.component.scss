@@ -1,0 +1,12 @@
+.has-error .form-control{
+    border-width: 1px;
+    border-color: pink !important;
+ }
+ .has-error>div{
+     padding-bottom: 15px;
+ }
+.text-error {
+    color: red;
+    font-size: 12px;
+}
+

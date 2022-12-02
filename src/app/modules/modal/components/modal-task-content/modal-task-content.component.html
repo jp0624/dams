@@ -1,0 +1,28 @@
+<ng-container [ngSwitch]="this.mode">
+  <app-attribute-list *ngSwitchCase="'dashboard'" [task_id]="this?.task_id" [type_id]="this.type?.type_id" [destination]="'modal'"></app-attribute-list>
+
+  <!--
+    <div *ngSwitchCase="'dashboard'">
+        <h1>Task Content Type Selection</h1>
+        <nav class="dashboard">
+          <ul>
+              <li>
+                  <a (click)="this.changeType('add')">
+                  <i class="material-icons">dns</i>
+                  <span>Choose from Existing</span>
+                </a>
+              </li>
+              <li>
+                <a (click)="this.changeType('create')">
+                  <i class="material-icons">add_circle_outline</i>
+                  <span>Create New</span>
+                </a>
+              </li>
+          </ul>
+        </nav>
+    </div>
+    <app-attribute-type *ngSwitchCase="'create'" [task_id]="this?.task_id" [type_id]="this?.type_id"></app-attribute-type>
+    <app-attribute-type *ngSwitchCase="'edit'" [task_id]="this?.task_id" [type_id]="this?.type_id"></app-attribute-type>
+    <app-attribute-list *ngSwitchCase="'add'" [type_id]="this.type?.type_id" (task_id)="changeType('edit', $event)" [destination]="'modal'"></app-attribute-list>
+  -->
+</ng-container>

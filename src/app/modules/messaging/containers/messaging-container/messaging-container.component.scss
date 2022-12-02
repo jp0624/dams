@@ -1,0 +1,97 @@
+:host {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    transition: z-index 0ms linear 150ms, opacity 150ms ease-in-out;
+
+    &.showMessage {
+        z-index: 100;
+        opacity: 1;
+        transition: z-index 0ms linear 0ms, opacity 150ms ease-in-out;
+        .message-wrapper {
+            
+            .message-frame {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale3d(1,1,1);
+
+            }
+        }
+    }
+    
+    .message-wrapper {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0,0.25);
+    
+        &.type-success {
+            .message-frame {
+                background-color: #36873e;
+                color: #fff;
+                border: none;
+                .close {
+                }
+            }
+        }
+        &.type-error {
+            .message-frame {
+                background-color: rgb(160, 23, 23);
+                color:#fff;
+                border: none;
+                .close {
+                }
+            }
+        }
+        .message-frame {
+            transition: all 350ms ease-in 0ms;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale3d(0.95,0.95,1);
+
+            background-color: #fff;
+            float: left;
+            width: 100%;
+            border-radius: 0px;
+            //padding: 3em 1.5em 1.5em;
+            padding: 1.5em;
+            border: 1px solid #ccc;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+    
+            height: auto;
+            width: 80%;
+            float: left;
+            h1 {
+                font-size: 3em;
+            }
+            p {
+                font-size: 1.5em;
+            }
+            .close {
+                color: #fff;
+                cursor: pointer;
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-size: 3em;
+                z-index: 2;
+            }
+            .message-content {
+                float: left;
+                height: 100%;
+                width: 100%;
+                position: relative;
+                overflow: hidden;
+                
+                padding: 1em;
+            }
+        }
+    }
+
+}

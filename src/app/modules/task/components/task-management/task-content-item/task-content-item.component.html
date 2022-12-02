@@ -1,0 +1,59 @@
+<mat-expansion-panel [expanded]="allExpandState">
+  
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <i class="material-icons">{{ group.icon }}</i>
+      <span>{{ group.tagname }}</span>
+    </mat-panel-title>
+    
+    <!-- <div (click)="onUp(group.group_id, group.order, $event)">move up</div>
+    <div (click)="onDown(group.group_id, group.order, $event)">move down</div> -->
+    <a class="titleicons" (click)="onUp(group.group_id, group.order, $event)">
+      <i class="material-icons order">keyboard_arrow_up</i>
+    </a>
+    <a class="titleicons" (click)="onDown(group.group_id, group.order, $event)">
+      <i class="material-icons order">keyboard_arrow_down</i>
+    </a>
+    <a class="titleicons" (click)="onEdit(group, $event)">
+      <i class="material-icons">edit</i>
+    </a>
+    <a class="titleicons" (click)="onDelete(group.group_id, group.order, $event)">
+      <i class="material-icons">delete</i>
+    </a>
+  </mat-expansion-panel-header>
+  <ng-container *ngFor="let item of group.content;let i=index;" [ngSwitch]="item.element">      
+    <div [ngClass]="{'bglightyellow': item.version != 1}">
+      <app-task-preview-image [ind]="i" [content]="item">
+      </app-task-preview-image>
+
+      <ng-container *ngSwitchCase="'input'">
+        <mat-form-field>        
+          <input matInput readonly placeholder="{{item.placeholder}}  {{item.version_name === 'default' || item.version_name === undefined ? '' :  '(' + item.version_name + ')' }}" value="{{item.value}}">
+        </mat-form-field>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'textarea'">
+        <mat-form-field *ngSwitchCase="'textarea'">
+          <textarea matInput readonly placeholder="{{item.placeholder}}  {{item.version_name === 'default' || item.version_name === undefined ? '' :  '(' + item.version_name + ')' }}"> {{item.value}} </textarea>
+        </mat-form-field>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'select'">
+        <div>
+          {{ item?.label }}
+        </div>
+        <mat-slide-toggle 
+          class="example-margin"
+          [disabled]="'true'"
+          [checked]="item?.value==='true' || item?.value===true || item?.value==='1' || item?.value===1">
+        </mat-slide-toggle>
+      </ng-container>
+
+      <div class="divImgBtn" *ngIf="(item.element === 'input' || item.element ==='textarea') && item.version =='1'">
+        <button (click)="addVersions(group.group_id, item.attrid)" class="imagebutton"><i class="material-icons">exposure</i></button>
+      </div>
+      
+    </div>
+  </ng-container>
+
+</mat-expansion-panel>

@@ -1,0 +1,58 @@
+%tasktype-shared {
+    width: 95%;
+}
+.master-div .container {
+    @extend %tasktype-shared;
+}
+.master-div .full-width {
+    @extend %tasktype-shared;
+}
+.master-div .mat-input-element {
+    caret-color: green !important;
+}
+
+
+.master-div input[type='button']:disabled,.master-div input[type='submit']:disabled,.master-div input[type='button'][disabled],.master-div input[type='submit'][disabled]
+{
+  border: 1px solid #b9b8b8;
+  background-color: #cccccc;
+  color: #a7a5a5 !important;
+}
+
+.master-div input[type='button'], .master-div input[type='submit'] {
+    width: 20vh;
+    height: 5vh;
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    cursor: pointer;
+    margin-left: 10px;
+    color: #807e7e !important;
+    font-size: 1.5vh;
+    margin-top: 1vh;
+    border-radius: 5px;
+}
+
+.master-div .subtitle {
+  font-size: 3vh;
+  padding-top: 1vh;
+}
+
+.master-div .selectList {
+  margin-top: 3vh;
+  margin-bottom: 11vh;
+}
+
+.master-div .buttons {
+  margin-top: 3vh;
+}
+
+.master-div .container{
+  background: white !important;
+  clear: both;
+  padding: 20px;
+  padding-bottom: 45px;
+}
+.master-div .checkboxList{ 
+  height: 414px;
+  overflow-y: scroll;
+}

@@ -1,0 +1,44 @@
+
+<div [formGroup]="parent">
+  <h2>Select Content to Localize</h2>
+  
+  <ul formGroupName="localFilter" class="component component-form">
+    <li *ngIf="this.params?.type === 'course'">
+      <label>
+        <span>Course</span>
+      </label>
+      
+      <select formControlName="courseList" (change)="selectCourse($event)" [ngModel]="this.params?.id || this.damData?.courseId">
+        <option [value]="0">Select Course</option>
+        <!--<option [value]="all">Localize all Courses</option>-->
+        <option *ngFor="let course of this.courseList, let i = index" [value]="course.id" [attr.selected]="course.id === this.damData.courseId ? true : null">
+            {{ course.id }}) - {{ course.name }}
+        </option>
+      </select>
+    </li>
+    <li *ngIf="this.params?.type === 'lesson'">
+      <label>
+        <span>Lesson</span>
+      </label>
+      <select formControlName="lessonList" (change)="selectLesson($event)" [ngModel]="this.damData.lessonId">
+        <option [value]="0">Select Lesson</option>
+        <!--<option [value]="'all'" *ngIf="this?.courseList">Localize all Lessons in Course</option>-->
+        <option *ngFor="let lesson of this.lessonList, let i = index" [value]="lesson.id" [attr.selected]="lesson.id === this.damData.lessonId ? true : null">
+            {{ lesson.id }}) - {{ lesson.name }}
+        </option>
+      </select>
+    </li>
+    <li *ngIf="this.params?.type === 'task'">
+      <label>
+        <span>Task</span>
+      </label>
+      <select formControlName="taskList" (change)="selectTask($event)" [ngModel]="this.damData.taskId">
+        <option [value]="0">Select Task</option>
+        <!--<option [value]="'all'" *ngIf="this?.lessonList">Localize all Tasks in Lesson</option>-->
+        <option *ngFor="let task of this.taskList, let i = index" [value]="task.id" [attr.selected]="task.id === this.damData.taskId ? true : null">
+            {{ task.id }}) - {{ task.name }}
+        </option>
+      </select>
+    </li>
+  </ul>
+</div>

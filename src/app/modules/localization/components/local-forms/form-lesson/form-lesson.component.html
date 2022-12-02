@@ -1,0 +1,46 @@
+<h2>
+    <i class="material-icons">assessment</i> Lesson: {{this.lesson?.name}}</h2>
+<dl *ngIf="this?.lesson" class="component">
+
+
+    <ng-container *ngIf="this.lesson?.description">
+        <dt>
+            <span>Description:</span>
+        </dt>
+        <dd>
+            <span>{{this.lesson?.description}}</span>
+        </dd>
+    </ng-container>
+    <dt>
+        <span>Lesson Code:</span>
+    </dt>
+    <dd>
+        <span>{{this.lesson?.code}}</span>
+    </dd>
+    <dt>
+        <span>Country Code:</span>
+    </dt>
+    <dd>
+        <span>{{this.localService?.country_code}}</span>
+    </dd>
+    <dt>
+        <span>Language Code:</span>
+    </dt>
+    <dd>
+        <span>{{this.localService?.lang_code}}</span>
+    </dd>
+    <ng-container *ngIf="this.lesson?.code && this.localService?.lang_code && this.localService?.country_code">
+        <button type="button" class="btn btn-preview" (click)="publishLesson(this.lesson.code, this.localService?.country_code, this.localService?.lang_code,  this.localService?.vehiclecode,  this.localService?.versioncode)">
+            <span>Publish</span>
+        </button>
+        <button type="button" class="btn btn-preview" (click)="previewLesson(this.lesson.code)">
+            <span>Preview</span>
+            <i class="material-icons">open_in_browser</i>
+        </button>
+        <ng-container *ngFor="let task of this?.tasks">
+            <app-form-task [parent]="this?.parent" [params]="this?.params" [damData]="this?.damData" [taskId]="task?.id">
+            </app-form-task>
+        </ng-container>
+
+    </ng-container>
+</dl>

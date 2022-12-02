@@ -1,0 +1,20 @@
+  <tbody>
+    <app-tr
+    *ngFor="let row of this?.data; let odd=odd; let even=even; let first=first; let last=last; let index=index"
+    [index]="index"
+    (itemSelected)="selectItem($event)"
+    (orderChanged)="changeOrder($event)"
+    (itemRemoved)="removeRow($event)"
+    [linktable]="this?.linktable"
+    [sortable]="this?.sortable"
+    [data]="row"
+    [keys]="keys"
+    [type]="'tbody'"
+    [destination]="this?.destination"
+    [ngClass]="{ odd: odd, even: even, first: first, last: last, remove : this.row.remove, selected : this?.isSelected(this.row?.language_id || this.row?.term_id), 'clickable': this.primary}"
+    [primary]="primary"
+    [section]="section"
+    [selectable]="this?.selectable"
+    class="{{i}} {{this.row.move}}"
+    ></app-tr>
+  </tbody>

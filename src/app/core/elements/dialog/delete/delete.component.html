@@ -1,0 +1,10 @@
+<h1 mat-dialog-title class="mat-dialog-title">
+  Delete  
+</h1>
+<div mat-dialog-content class="mat-dialog-content">
+  <p>Are you sure want to delete?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No</button>
+  <button mat-button cdkFocusInitial (click)="onYesClick()">Yes</button>
+</div>

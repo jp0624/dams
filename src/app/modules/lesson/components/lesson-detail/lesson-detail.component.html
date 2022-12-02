@@ -1,0 +1,102 @@
+<!--
+    - lesson_id
+    - Name
+    - Code
+    - Description
+    - Private URL
+    - Status
+    - Vehicle
+-->
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()"> <!-- novalidate -->
+
+    <nav class="nav-component nav-component-top">           
+            <button type="submit" class="btn btn-save" [disabled]="form.invalid">
+                <span>{{this.modal ? 'Add to Course' : 'Save Changes' }}</span>
+            </button>
+            <button *ngIf="this.lesson?.id && !this.modal" class="btn btn-localize" [routerLink]="['/localization/lesson/' + this.lesson.id + '/en']" routerLinkActive="active"> <!--</button> (click)="localizeTask()">-->
+                <span>Localize</span>
+                <i class="material-icons">add_location</i>
+            </button>
+            <button *ngIf="this.lesson?.code" type="button" class="btn btn-preview" (click)="previewLesson(this.lesson.code)">
+                <span>Preview</span>
+                <i class="material-icons">open_in_browser</i>
+            </button>
+            <button *ngIf="this.lesson?.id" type="button" class="btn btn-preview" title="Copy Lesson" (click) = "copyLesson()">
+                    <span>Copy Lesson</span>
+             </button>            
+    </nav>
+
+    <h1>Lesson Details</h1>
+
+    <!--<template [ngIf]="this?.lesson">-->
+        <app-lesson-detail-form
+            [lesson]="this?.lesson"
+            [class]="'component component-form'"
+            [parent]="form"
+            [sts]="this?.sts"
+            [types]="this?.types"
+            [vhs]="this?.vhs"
+            [vrs]="this?.vrs">
+        </app-lesson-detail-form>
+    <!--</template>-->
+
+    <pre>{{ form.value | json }}</pre>
+    
+    <ng-container *ngIf="this.lesson?.id && !this.modal">
+        <pre>Lesson ID: {{ this.lesson?.id }}</pre>
+        <pre>Course ID: {{ this?.course_id }}</pre>
+        <pre>Lesson ID: {{ this?.lesson_id }}</pre>
+
+        <h1>Tasks</h1>
+        <pre>{{ this?.tasks | json }}</pre>
+        <pre>==================================</pre>
+        <pre>==================================</pre>
+        <pre>{{ this?.lesson | json }}</pre>
+
+        <ng-container *ngIf="this?.tasks && this?.lesson">
+            <app-dynamicTable
+                [attr.db-table]="task"
+                [data]="this.tasks"
+                [primary]="'id'"
+                [section]="'task'"
+                [sortable]="true"
+                [linktable]="'lesson_task'">
+            </app-dynamicTable>
+        </ng-container>
+        
+        <ng-container *ngIf="!this.tasks || !this.lesson">
+            <div class="alertBox warning">
+                There are currently no tasks in this course.
+            </div>
+        </ng-container>
+
+        <nav class="nav-component">
+            <a (click)="this.modalService.showModal('task', this.lesson.id)" class="btn btn-standard">
+                <span>Add Task</span>
+            </a>
+        </nav>
+    </ng-container>
+
+    <nav class="nav-component nav-component-top">
+            <button type="submit" class="btn btn-save" [disabled]="form.invalid">
+                    <span>{{this.modal ? 'Add to Course' : 'Save Changes' }}</span>
+            </button>
+            <button *ngIf="this.lesson?.id && !this.modal" class="btn btn-localize" [routerLink]="['/localization/lesson/' + this.lesson.id + '/en']" routerLinkActive="active"> <!--</button> (click)="localizeTask()">-->
+                <span>Localize</span>
+            </button>
+    </nav>
+
+</form>
+
+<!--
+<app-task-list
+    *ngIf="this?.lesson"
+    [id]="this.lesson?.lesson_id">
+</app-task-list>
+
+<app-lesson-versions
+    *ngIf="this?.lesson"
+    [id]="this.lesson?.lesson_id">
+</app-lesson-versions>
+-->

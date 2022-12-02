@@ -1,0 +1,25 @@
+input[type="text"], input[type="password"] {
+    margin: 0;
+    padding:  0;
+}
+/*
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button, input  {
+    -webkit-appearance:  none;
+    margin:  0;
+     -webkit-border-radius: 0;
+     border-radius: 0;
+}
+*/
+input[type="submit"] {
+    cursor: hand;
+    cursor: pointer;
+}
+input[type="checkbox"]  {
+    -webkit-appearance:  checkbox;
+}
+input[type="radio"]  {
+    -webkit-appearance:  radio;
+}
+textarea {
+    resize:  none;
+}

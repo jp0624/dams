@@ -1,0 +1,13 @@
+<div class="form-group">
+    <label class='control-label' *ngIf="showLabel">
+        {{label}}
+    </label>
+    <div [ngClass]="{'has-error':isError}" >
+        <ng-content></ng-content>
+        <ng-container *ngIf='isError'>
+            <div>
+                <span class="text-error" *ngFor="let msg of errorMessages"> {{ msg }}</span>
+            </div>
+        </ng-container>
+    </div>
+</div>

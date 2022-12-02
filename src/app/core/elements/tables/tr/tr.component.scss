@@ -1,0 +1,99 @@
+
+tr {
+    position: relative;
+    &.clickable {
+        transition: transform 150ms linear 0ms, background-color 150ms linear 0ms, border-color 150ms linear 75ms;
+        
+        cursor: pointer;
+
+        td {
+            &.func {
+                opacity: 0;
+                transition: transform 150ms linear 0ms, background-color 150ms linear 0ms;
+                padding: 0;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                width: 2em;
+                color:#fff;
+                z-index: -1;
+                i {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+                &.func-view {
+                    background-color: #4ba355;
+                    left: 0;
+                }
+                &.func-order {
+                    display: none;
+                }
+                &.func-delete {
+                    background-color: #b51a39;
+                    right: 0;
+
+                    &:hover {
+                        background-color: #8c132b;
+                    }
+                }
+            }
+        }
+        &.sortable {
+            
+            td {
+                &.func {
+                    &.func-order {
+                        display: block;
+                        height: 50%;
+                        background-color: #4a71a2;
+                        left: 0;
+                        &.func-order-down {
+                            bottom: 0;
+                            top: auto;
+                        }
+                        &:hover {
+                            background-color: #37547a;
+                        }
+                    }
+                }
+            }
+        }
+
+        &:hover {
+            transition: transform 150ms linear 0ms, background-color 150ms linear 0ms, border-color 150ms linear 0ms;
+            //transform: scale(1.02, 1.2);
+
+            transform: scale(1.025);
+            position: relative;
+            border: 1px solid #505050;
+            /*
+            color: #505050;
+            background: #eee;
+            //box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            */
+            z-index: 1;
+        
+            td {
+                &.func {
+                    transition: all 150ms linear 150ms;
+                    z-index: -1;
+                    opacity: 1;
+
+                    &.func-view {
+                        transform: translate(-100%, 0%);
+                    }
+                    &.func-order {
+                        transform: translate(-100%, 0%);
+                    }
+                    &.func-delete {
+                        transform: translate(100%, 0%);
+                    }
+                }
+            }
+        }
+        
+    }
+    
+}

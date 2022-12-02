@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DAMS Admin App</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+      <!-- inline spinner styles to be able to display spinner right away -->
+    <style type="text/css">
+      body, html {
+        height: 100%;
+      }
+      .app-loading {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+      .app-loading .spinner {
+        height: 200px;
+        width: 200px;
+        animation: rotate 2s linear infinite;
+        transform-origin: center center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+      .app-loading .spinner .path {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+        animation: dash 1.5s ease-in-out infinite;
+        stroke-linecap: round;
+        stroke: #ddd;
+      }
+      @keyframes rotate {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes dash {
+        0% {
+          stroke-dasharray: 1, 200;
+          stroke-dashoffset: 0;
+        }
+        50% {
+          stroke-dasharray: 89, 200;
+          stroke-dashoffset: -35px;
+        }
+        100% {
+          stroke-dasharray: 89, 200;
+          stroke-dashoffset: -124px;
+        }
+      }
+      .logo {
+        height: 50px;
+        width: 50px;
+        background: url('data:image/jpeg;base64,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')
+      }
+    </style>
+</head>
+<body>
+  <script>
+    window.onfocus = function() {
+      console.log('Got focus');
+    }
+  </script>
+  <app-root>
+    <div class="app-loading">
+      <div class="logo">
+      </div>
+      <svg class="spinner" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+      </svg>
+    </div>
+  </app-root>
+  
+  <noscript>Your browser does not support JavaScript! This app needs JavaScript support.</noscript>
+
+</body>
+</html>

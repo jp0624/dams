@@ -1,0 +1,31 @@
+<!--
+    - term_id
+    - selector
+    - term
+-->
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  
+<nav class="nav-component nav-component-top">
+  <button type="submit" class="btn btn-save" [disabled]="form.invalid">
+      <span>Save Changes</span>
+  </button>
+</nav>
+
+<h1>Dictionary Term Details</h1>
+<ng-container *ngIf="this?.term">
+  <app-dictionary-detail-form
+      [term]="this?.term"
+      [class]="'component component-form'"
+      [parent]="form">
+  </app-dictionary-detail-form>
+</ng-container>
+
+<pre>{{ form.value | json }}</pre>
+
+<nav class="nav-component">
+  <button type="submit" class="btn btn-save">
+      <span>Save Changes</span>
+  </button>
+</nav>
+</form>

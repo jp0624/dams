@@ -1,0 +1,23 @@
+  
+.lang-avail {
+    position:relative;
+
+    background-color: #fff;
+    float: left;
+    width: calc(25% - 1em);
+    border-radius: 0px;
+    margin: 0.5em;
+    border: 1px solid #ccc;
+    
+    float: left;
+}
+a {
+    display: block;
+    text-decoration: none;
+
+    &.lang-link {
+        padding: 20px;
+        width: 100%;
+        color: #777;
+    }
+}

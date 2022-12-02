@@ -1,0 +1,61 @@
+dl {
+    margin: 0.5em 0;
+    padding: 20px;
+    width: 100%;
+    display: block;
+    float: left;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    overflow: hidden;
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, 0%);
+    
+    dt {
+        clear: both;
+        text-align: right;
+        line-height: 37px;
+        padding: 0 20px;
+    }
+    dd {
+        padding: 0 20px 0 10px;
+
+        input {
+            margin: 2px 0;
+            height: calc(100% - 4px);
+            width: 100%;
+            border: none;
+            padding: 0 10px;
+            background-color: transparent;
+            border-radius: 2px;
+            border: 1px solid transparent;
+            transition: all 150ms ease-in-out;
+
+            &:focus {
+                border: 1px solid #b51a39;
+            }
+        }
+        span {
+            line-height: 37px;
+        }
+    }
+    dt,
+    dd {
+        height: 37px;
+        position: relative;
+        float: left;
+        width: 50%;
+        border-bottom: 1px solid #ccc;
+        &:empty {
+
+            &:before {
+                content: "-";
+            }
+        }
+        &.odd {
+            
+            background-color: #f8f8f8;
+        }
+    }
+}

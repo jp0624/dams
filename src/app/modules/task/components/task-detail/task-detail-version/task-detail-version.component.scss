@@ -1,0 +1,15 @@
+.vers {
+
+    .ver {
+        float: left;
+        width: 50%;
+
+        &.ver-template{
+
+            * {
+                pointer-events:none;
+            }
+        }
+
+    }
+}

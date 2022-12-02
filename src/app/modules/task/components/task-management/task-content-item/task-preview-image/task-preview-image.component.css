@@ -1,0 +1,39 @@
+.preview-wrapper {
+    position: absolute;
+    width: 25em;
+    top: 10%;
+    /* right: 67%; */
+    left: 40px;
+    float: right;
+    opacity: 0;
+    padding: 0.25em;
+    border: 1px solid #ccc;
+    background: #fff;
+    transition: all 250ms ease-in-out;
+    transform-origin: left top;
+    transform: scale(0) translate(0, 0);
+    z-index: 1000;
+}
+#imageicon .imagepreview {
+    font-size: 24px;
+    padding-right: 10px;
+    opacity: 1;
+}
+/* #imageicon {
+    opacity: 1;
+}
+#imageicon:hover {
+    opacity: .5;
+} */
+.showImage {
+    opacity: 1;
+    transform: scale(1) translate(0px, 0px);
+}
+/* .hideImage {
+    opacity: 0;
+    transform: scale(0) translate(0, -50%);
+} */
+img {
+    width: 100%;
+    
+}

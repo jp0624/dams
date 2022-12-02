@@ -1,0 +1,115 @@
+<ng-container *ngIf="this.task?.task_name && this.localService.lang_code && this.localService.country_code">
+    <div [formGroup]="parent">
+        <h2>
+            <i class="material-icons">dns</i> Task: {{this.task?.task_name}}</h2>
+        <div *ngIf="this?.task && this.task?.task_type_id" class="component" formGroupName="localContent">
+            <!--formGroupName="localContent">-->
+            <dl *ngIf="this.task?.description">
+                <dt>
+                    <span>Description:</span>
+                </dt>
+                <dd>
+                    <span>{{this.task?.description}}</span>
+                </dd>
+            </dl>
+
+            <ng-container *ngIf="this?.task">
+                <pre>this.task : {{ task | json }}</pre>
+                <ng-container *ngFor="let group of this.task?.groups; let i of index">
+                    <h2>
+                        <i class="material-icons">{{ group?.icon }}</i> - {{ group?.group_name }}</h2>
+                    <ul class="component component-translate-form component-form">
+                        <ng-container *ngFor="let attribute of group?.content; let i of index">
+                            <ng-container *ngIf="this.attribute.template_value">
+                                <li class="task-local" [ngClass]="{'content-version': attribute?.version_id !== 1}">
+
+                                    <pre>{{ attribute | json }}</pre>
+
+                                    <label>
+                                        <span>{{ attribute?.label }}</span>
+                                        <ng-container *ngIf="attribute?.version_id !== 1">{{ attribute?.version_id }}{{ attribute?.version }}</ng-container>
+                                        <span class="note">({{attribute?.content_id}})</span>
+                                    </label>
+
+                                    <ng-container [ngSwitch]="attribute?.element">
+
+                                        <ng-container *ngIf="attribute.type === 'image'">
+                                            <a class="media-modal">
+                                                <div class="preview-wrapper" *ngIf="this.attribute?.template_value">
+                                                    <img [src]="this.globalService.assetsurl + this.attribute.template_value" />
+                                                </div>
+                                                <i class="material-icons">panorama</i>
+                                            </a>
+                                        </ng-container>
+
+                                        <div class="translate translate-template">
+                                            <input *ngSwitchCase="'input'" [value]="attribute?.template_value != 'undefined' ? attribute?.template_value : attribute?.default_value"
+                                            />
+                                            <textarea *ngSwitchCase="'textarea'">{{ attribute?.template_value != 'undefined' ? attribute?.template_value : attribute?.default_value }}</textarea>
+                                        </div>
+
+                                    </ng-container>
+
+                                    <ng-container *ngIf="attribute?.type !== 'class' && attribute.type !== 'css' && attribute.type !== 'html' && attribute.type !== 'code' && this.attribute.type !== 'truefalse'">
+                                        <a (click)="copyTemplateValue(attribute?.content_id, attribute?.template_value != 'undefined' ? attribute?.template_value : attribute?.default_value)"
+                                            class="copy-value">
+                                            <i class="material-icons">input</i>
+                                        </a>
+                                    </ng-container>
+
+                                    <ng-container [ngSwitch]="attribute?.element">
+
+                                        <ng-container *ngIf="attribute.type === 'image' || attribute.type === 'video'">
+                                            <a class="media-modal media-local" (click)="this.modalService.showModal('media', attribute)">
+                                                <div class="preview-wrapper" *ngIf="GetImageUrl(attribute.content_id)">
+                                                    <img [src]="this.globalService.assetsurl + GetImageUrl(attribute.content_id)" />
+                                                </div>
+                                                <i class="material-icons">panorama</i>
+                                            </a>
+                                        </ng-container>
+
+                                        <div class="translate translate-local" *ngIf="attribute?.content_id  && attribute?.type !== 'class' && attribute.type !== 'css' && attribute.type !== 'html' && attribute.type !== 'code'">
+                                            <pre>{{ attribute?.content_id | json }}</pre>
+                                            <input [required]="attribute.type !== 'number' && attribute.type !== 'image' && attribute.type !== 'video' && attribute.type !== 'alt'" *ngSwitchCase="'input'"
+                                                [id]="attribute?.content_id" [placeholder]="attribute?.placeholder" [value]="attribute?.content_value"
+                                                formControlName="{{attribute?.content_id}}" />
+                                            <textarea required *ngSwitchCase="'textarea'" formControlName="{{attribute?.content_id}}"></textarea>
+                                        </div>
+
+                                    </ng-container>
+                                </li>
+                            </ng-container>
+                        </ng-container>
+                    </ul>
+                </ng-container>
+
+                <ng-container *ngIf="this.task?.terms">
+                    <h2>
+                        <i class="material-icons">bookmark</i> Dictionary Terms</h2>
+                    <pre>{{ this.task.terms | json }}</pre>
+                    <ul class="component component-translate-form component-form">
+                        <ng-container *ngFor="let term of this.task.terms; let i of index">
+                            <li class="task-local">
+                                <label>
+                                    <span>{{ term?.term }}
+                                        <span class="note">({{term?.content_id}})</span>
+                                    </span>
+                                </label>
+                                <div class="translate translate-template">
+                                    <input [value]="term.term" />
+                                </div>
+                                <a (click)="copyTemplateValue(term.content_id, term.term)" class="copy-value">
+                                    <i class="material-icons">input</i>
+                                </a>
+                                <div class="translate translate-local" *ngIf="term?.content_id">
+                                    <pre>{{ term?.content_id | json }}</pre>
+                                    <input required [id]="term?.content_id" [value]="term?.content_value" formControlName="{{term?.content_id}}" />
+                                </div>
+                            </li>
+                        </ng-container>
+                    </ul>
+                </ng-container>
+            </ng-container>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,31 @@
+<!--
+    - language_id
+    - name
+    - code
+-->
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+        
+    <nav class="nav-component nav-component-top">
+        <button type="submit" class="btn btn-save" [disabled]="form.invalid">
+            <span>Save Changes</span>
+        </button>
+    </nav>
+
+    <h1>Language Details</h1>
+    <ng-container *ngIf="this?.language">
+        <app-language-detail-form
+            [language]="this?.language"
+            [class]="'component component-form'"
+            [parent]="form">
+        </app-language-detail-form>
+    </ng-container>
+
+    <pre>{{ form.value | json }}</pre>
+
+    <nav class="nav-component">
+        <button type="submit" class="btn btn-save">
+            <span>Save Changes</span>
+        </button>
+    </nav>
+</form>

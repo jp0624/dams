@@ -1,0 +1,38 @@
+
+<ng-container *ngIf="this?.attributeType">
+    <pre>{{ this?.attributeType | json }}</pre>
+    <!--
+        <pre>{{ this?.formArray | json }}</pre>
+        <pre>{{ this?.group | json }}</pre>
+        [formGroup]="formArray.controls[groupId]"
+    -->
+    <h3>{{ this.group?.child }} - {{ this.group?.child_type }}</h3>
+  
+      <a class="func func-order func-order-up"
+         (click)="changeOrder(this.group.task_group_id, this.group.order, 'up')">
+          <i class="material-icons">keyboard_arrow_up</i>
+      </a>
+      <a class="func func-order func-order-down"
+         (click)="changeOrder(this.group.task_group_id, this.group.order, 'down')">
+          <i class="material-icons">keyboard_arrow_down</i>
+      </a>
+      <a class="func func-order func-delete"
+         (click)="deleteLink('task_group', this.group.task_group_id)">
+          <i class="material-icons">remove_circle</i>
+      </a>
+    <app-task-attribute
+      class="component component-form"
+      [task]="task"
+      [attributes]="this.attributeType"
+      [task_id]="task_id"
+      [link_id]="link_id"
+      [group]="this.group.task_group_id"
+      [form]="form"
+      [formArray]="formArray"
+      [groupIndex]="groupIndex"
+      [questions]="this.questions"
+      [verAvailable]="this?.verAvailable"
+      >
+    </app-task-attribute>
+  <pre>{{ formArray.value | json }}</pre>
+</ng-container>

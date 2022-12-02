@@ -1,0 +1,33 @@
+<!-- This needs to be a loop for each group -->
+
+<ul *ngIf="this?.attributeGroups && this?.attributeGroupsKeys">
+  <h2>Task Content {{this.attributeGroups[0]?.child}}s</h2>
+
+  <!--
+    <pre>{{ this?.attributeGroups | json }}</pre>
+  -->
+
+  <!--<div *ngFor="let ctrl of myForm.controls.whateverArray01.controls; let i = index" [formGroupName]="i">-->
+
+  <li *ngFor="let attributeGroup of this.attributeGroups; let i = index; let odd=odd; let even=even; let first=first; let last=last;"
+    class="{{i}} {{this.attributeGroup.move}}">
+    <!--
+    <app-dynamicList
+      [data]="attributeGroup"
+      [keys]="attributeGroupsKeys"
+    >
+    </app-dynamicList>
+    -->
+    <app-attribute-type [task]="task" [group]="attributeGroup" [form]="form" [formArray]="formArray" [groupIndex]="attributeGroup.initOrder"
+      [index]="i" (orderChanged)="changeOrder($event)" (itemRemoved)="removeRow($event)" class="component component-form">
+    </app-attribute-type>
+
+  </li>
+
+</ul>
+
+<ng-container *ngIf="!this?.attributeGroupsKeys">
+  <div class="alertBox warning">
+    There are currently no attributes configured for this task.
+  </div>
+</ng-container>

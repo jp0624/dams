@@ -1,0 +1,58 @@
+mat-form-field {
+    left: 20% !important;
+    margin: 2em .1em;
+}
+.btn-download {
+    background-color: #4ba355;
+    padding: 11px 41px;
+    border: none;
+    color: #fff;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-decoration: none;
+    float: left;
+    margin: -1em .1em;
+    position: relative;
+    transition: all 150ms linear 0ms;
+    cursor: pointer;
+    border-radius: 5px;
+    // &:hover {
+    //     transform:  translate(-50%, 0) scale(1.085);
+    // }
+}
+.btn-download i {
+    position: relative;
+    left: -9px;
+    font-size: 22px;
+    top: 4px;
+}
+.btn-download span {
+    position: relative;
+    left: -4px;
+    top: -2px;
+}
+.loading {
+    padding: 15px 45px;
+    border: none;
+    color: #000;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-decoration: none;
+    float: left;
+    margin: -1em .1em;
+    position: relative;
+    transition: all 150ms linear 0ms;
+    cursor: pointer;
+    &:hover {
+        transform:  translate(-50%, 0) scale(1.085);
+    }
+}
+button{
+    position: relative;
+    right: 0px;
+    left: 290px;
+    top: -16px;
+    border: none;
+    background: transparent;
+    font-size: 23px;
+}

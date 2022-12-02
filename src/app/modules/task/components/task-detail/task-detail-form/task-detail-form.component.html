@@ -1,0 +1,25 @@
+<!--
+    - task_id
+    - type_id
+    - status_id
+    - name
+    - description
+    - lock_type
+    - lock_time
+    <ul formGroupName="{{parent}}" class="form form-standard" [ngClass]="{'hasData': course}">
+-->
+
+<div [formGroup]="form">
+  <ul formGroupName="taskMeta" class="form form-standard">
+
+    <li *ngFor="let question of questions" [attr.hidden]="question.type === 'hidden' ? 'hidden' : null" class="form-row">
+      <!-- <div>{{ question | json }}</div> -->
+      <pre>{{ question | json }}</pre>
+      <df-question [question]="question" [form]="formGroup"></df-question>
+
+    </li>
+
+    <pre>{{ formGroup.value | json }}</pre>
+  </ul>
+
+</div>

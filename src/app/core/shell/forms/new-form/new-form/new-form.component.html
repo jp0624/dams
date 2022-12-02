@@ -1,0 +1,13 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate>
+    <label>Appears Once:</label>
+    <input type="text" formControlName="appearsOnce" />
+
+    <div formArrayName="formArray">
+        <div *ngFor="let control of formData.controls; let i = index">
+            <button type="button" (click)="delInput(i)">Delete</button>
+            <sub-form [myForm]="myForm.controls.formArray.controls[i]"></sub-form>
+        </div>
+    </div>
+    <button type="button" (click)="addInput()">Add</button>
+    <button type="submit" [disabled]="!myForm.valid">Save</button>
+</form>

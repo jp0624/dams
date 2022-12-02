@@ -1,0 +1,124 @@
+<h1>Media List</h1>
+<h3 *ngIf="this.mediaService?.curPath" class="media-heading">Directory: {{ this.mediaService.curPath }}</h3>
+  <h2>Folders</h2>
+  <div class="file-input" *ngIf="this.createFolder">
+    <button (click)="toggleCreateFolder()">X</button>
+    <input type="text" #folder>
+    <button (click)="createDir(folder.value)">Create Folder</button>
+  </div>
+  <pre>{{ this.mediaService?.fileData | json }}</pre>
+  <ul class="media-list media-list-folders">
+      <li *ngIf="this.mediaService.curPath !== ':media:' && this.mediaService.curPath !== ':media' && this.mediaService.curPath !== '/media/' && this.mediaService.curPath !== '/media'">
+        <a (click)="getFolderData(':media')" >
+          <s></s>
+          <b>
+            <div class="folder-icon">
+              <i class="material-icons">home</i>
+              <span>Home</span>
+            </div>
+          </b>
+        </a>
+      </li>
+      <li *ngIf="this.mediaService.curPath !== ':media:' && this.mediaService.curPath !== ':media' && this.mediaService.curPath !== '/media/' && this.mediaService.curPath !== '/media'">
+        <a (click)="getParentFolderData(this.mediaService.curPath)" >
+          <s></s>
+          <b>
+            <div class="folder-icon">
+              <i class="material-icons">reply</i>
+              <span>Parent</span>
+            </div>
+          </b>
+        </a>
+      </li>
+      <ng-container *ngIf="fileList?.folders">
+        <li *ngFor="let folder of fileList?.folders" (click)="getFolderData(folder.path)">
+          <a>
+            <s></s>
+            <b>
+                <div class="folder-icon">
+                  <i class="material-icons">folder_open</i>
+                  <span>{{ folder.name }}</span>
+                </div>
+            </b>
+          </a>
+        </li>
+      </ng-container>
+      <li (click)="toggleCreateFolder()" *ngIf="!this.createFolder">
+        <a >
+          <s></s>
+          <b>
+            <div class="folder-icon">
+              <i class="material-icons">create_new_folder</i>
+              <span>New Folder</span>
+            </div>
+          </b>
+        </a>
+      </li>
+  </ul>
+
+    <h2>Files</h2>
+    <div class="file-input" *ngIf="this.uploadFile">
+      <button (click)="toggleUploadFile()">X</button>
+      <input type="file" #fileUpload>
+      <button (click)="upload(fileUpload)">Upload File</button>
+    </div>
+    <ul class="media-list media-list-files">
+      <ng-container *ngIf="fileList?.files.length > 0">
+        <li *ngFor="let file of fileList?.files" (click)="viewFile(this.file)">
+          <a>
+            <s></s>
+            <b>
+                <ng-container [ngSwitch]="file.xtn">
+                    <ng-container *ngSwitchCase="'jpg'">
+                      <!--this.globalService?.assetsurl-->
+                      <img [src]="this.globalService?.assetsurl + file?.path" />
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'jpeg'">
+                      <!--this.globalService?.assetsurl-->
+                      <img [src]="this.globalService?.assetsurl + file?.path" />
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'png'">
+                      <!--this.globalService?.assetsurl-->
+                      <img [src]="this.globalService?.assetsurl + file?.path" />
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'gif'">
+                      <!--this.globalService?.assetsurl-->
+                      <img [src]="this.globalService?.assetsurl + file?.path" />
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'svg'">
+                      <!--this.globalService?.assetsurl-->
+                      <img [src]="this.globalService?.assetsurl + file?.path" />
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'mp4'">
+                      <div class="file-icon video-icon">
+                        <i class="material-icons">movie</i>
+                      </div>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'xlsx'">
+                      <div class="file-icon xlsx-icon">
+                        <i class="">.xlsx</i>
+                      </div>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'xls'">
+                      <div class="file-icon">
+                        <i class="material-icons">text_format</i>
+                      </div>
+                    </ng-container>
+                </ng-container>
+            </b>
+          </a>
+          <h3>{{ file?.name }}</h3>
+        </li>
+      </ng-container>
+      <li (click)="toggleUploadFile()" *ngIf="!this.uploadFile">
+        <a >
+          <s></s>
+          <b>
+            <div class="file-icon">
+              <i class="material-icons">file_upload</i>
+              <span>Upload File</span>
+            </div>
+          </b>
+        </a>
+      </li>
+    </ul>

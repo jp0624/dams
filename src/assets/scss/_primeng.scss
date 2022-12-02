@@ -1,0 +1,50 @@
+
+.tableIcon{
+    width:50px !important;
+}
+table{
+    table-layout:auto !important;
+}
+
+
+.ui-datatable .ui-datatable-thead>tr>th{
+    font-weight:bold !important;
+    padding: 10px 15px 10px 15px !important;
+}
+
+.ui-datatable-data>tr>td{
+    padding: 15px 0 15px 10px !important;
+}
+
+.ui-column-filter{
+    background-image:url(assets/img/icon_filter.svg);
+    background-size:12px 12px;
+    background-position: 95% 4px;
+    background-repeat: no-repeat;
+}
+
+#CourseList th:nth-child(1),#CourseList th:nth-child(2), #CourseList th:nth-child(5),
+#LessonType th:nth-child(1), #LessonsList th:nth-child(1),#LessonsList th:nth-child(2), #LessonsList th:nth-child(5), 
+#TaskAttrGroup th:nth-child(1),
+#CountriesList th:nth-child(1), #CountriesList th:nth-child(3), 
+#UserList th:nth-child(1), #UserList th:nth-child(5), #GroupList th:nth-child(1),
+#DictionaryList th:nth-child(1),#StatusList th:nth-child(1),#VehiclesList th:nth-child(1){
+    width:120px !important;
+}
+
+#LanguageList th:nth-child(1), #LanguageList th:nth-child(2), #LanguageList th:nth-child(4){
+    width:135px !important;
+}
+
+#TaskType th:nth-child(1), #TaskType th:nth-child(5), #TaskType th:nth-child(6){
+    width:100px !important;
+}
+
+.ui-datatable th.ui-state-active{
+    background:#333 !important;
+}
+
+.ui-paginator .ui-paginator-page.ui-state-active{
+    background:#333 !important;
+    border-color:#333 !important;
+}

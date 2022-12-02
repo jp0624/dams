@@ -1,0 +1,25 @@
+<div [formGroup]="parent">
+  <ul formGroupName="country" class="form form-standard" [ngClass]="{'hasData': country}">
+    <input
+      type="hidden"
+      formControlName="country_id">
+    <li>
+      <label>Country Name:</label>
+      <input
+          type="text"
+          formControlName="name" required>
+    </li>
+    <li>
+      <label>Country Code:</label>
+      <input
+          type="text"
+          formControlName="code" required>
+    </li>
+    <li>
+      <label>Continent:</label>
+      <input
+          type="text"
+          formControlName="continent" required>
+    </li>
+  </ul>
+</div>

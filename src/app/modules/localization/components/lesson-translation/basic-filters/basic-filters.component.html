@@ -1,0 +1,41 @@
+<div>
+    <form [formGroup]="fgFilter" class="lesson-form">
+      <mat-form-field class="lesson-full-width">
+        <input type="text" placeholder="Lesson code (type lesson name to filter)" aria-label="Number" matInput formControlName="lessoncode" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)='vehicleChange($event.option.value)'>
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option.code">
+          {{option.name}} ( {{option.code}} )
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+        <mat-form-field class="lesson-full-width">
+          <mat-select placeholder="Country" (selectionChange)="countryChange($event.value)" formControlName="countrycode" required>
+            <mat-option *ngFor="let country of countries" [value]="country.code">
+              {{country.name}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+      <mat-form-field class="lesson-full-width">
+          <mat-select placeholder="Language" (selectionChange)="languageChange($event.value)" formControlName="languagecode" required>
+            <mat-option *ngFor="let lang of languages" [value]="lang.code">
+              {{lang.name}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+        <mat-form-field class="lesson-full-width">
+          <mat-select placeholder="Vehicle Type"  formControlName="vehiclecode"> <!--(selectionChange)="versionChange($event.value)" -->
+            <mat-option *ngFor="let vehicle of vehicles" [value]="vehicle.code">
+              {{vehicle.name}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+      <!-- <mat-form-field class="lesson-full-width">
+      <mat-select placeholder="Version" formControlName="versioncode">
+          <mat-option *ngFor="let version of versions" [value]="version.code">
+            {{version.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+      <button (click)="search(fgFilter.value)" [disabled]="!fgFilter.valid"> Search </button>
+    </form>
+</div>

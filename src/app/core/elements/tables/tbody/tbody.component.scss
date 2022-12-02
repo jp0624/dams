@@ -1,0 +1,191 @@
+
+@keyframes moveUp {
+    0%   {
+        transform: translate(0%, 0%) translateZ(0px);
+        z-index: 99;
+    }
+    65% {
+        transform: translate(0%, -95%) translateZ(-125px);
+         opacity: 0.25;
+         z-index: 99;
+    }
+    75% {
+        transform: translate(0%, -100%) translateZ(15px);
+        opacity: 0.5;
+        z-index: 99;
+    }
+    100% {
+        transform: translate(0%, -100%) translateZ(0px);
+        z-index: 99;
+    }
+}
+@keyframes moveDown {
+    0%   {
+        transform: translate(0%, 0%) translateZ(0px);
+        z-index: 100;
+    }
+    60% {
+        transform: translate(0%, 95%) translateZ(150px);
+        z-index: 100;
+    }
+    75% {
+        transform: translate(0%, 100%) translateZ(-15px);
+        z-index: 100;
+    }
+    100% {
+        transform: translate(0%, 100%) translateZ(0px);
+        z-index: 100;
+    }
+}
+@keyframes remove {
+    0%   {
+        transform: translate(0%, 0%) translateZ(0px);
+    }
+    100% {
+        transform: translate(0%, 0%) translateZ(-125px);
+         opacity: 0;
+    }
+}
+
+tbody {
+    width: 100%;
+    display: block;
+    float: left;
+    
+    app-tr {
+        &.first {
+            tr {
+                &.sortable.clickable {
+                
+                    td {
+                        &.func {
+                            &.func-order {
+                                &.func-order-up {
+                                    display: none;
+                                }
+                                &.func-order-down {
+                                    height: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.last {
+            tr {
+                &.sortable.clickable {
+                
+                    td {
+                        &.func {
+                            &.func-order {
+                                &.func-order-down {
+                                    display: none;
+                                }
+                                &.func-order-up {
+                                    height: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.odd {
+            tr {
+                background-color: #f8f8f8;
+            }
+        }
+
+        tr {
+            background-color: #fff;
+            
+        }
+        &.selected {
+            tr {
+                background-color: #4a71a2;
+                color: #fff;
+            }
+            
+        }
+    }
+}
+tbody {
+    position: relative;
+    perspective: 2500px;
+
+    app-tr {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        
+        transition: transform ease-in 150ms;
+        transform: translate(0%, 0%) translateZ(0px);
+        position: relative;
+        animation-duration: 750ms;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+        transform-style: preserve-3d;
+        animation-iteration-count: 1;
+        //border: 1px solid transparent;
+        transition: border ease-out 250ms;
+
+        &.selected {
+            border-color: #4a71a2;
+        }
+        &.up {
+            border: 1px solid #505050;
+            animation-name: moveUp;
+        }
+        &.down {
+            border: 1px solid #505050;
+            animation-name: moveDown;
+        }
+        &.remove {
+            animation-duration: 500ms;
+            border: 1px solid #505050;
+            animation-name: remove;
+        }
+        
+        &.clickable {
+            transition: transform 150ms linear 0ms, background-color 150ms linear 0ms, border-color 150ms linear 75ms;
+
+            &.selected {
+                background-color: #4a71a2;
+            }
+
+            &:hover {
+                transition: transform 150ms linear 0ms, background-color 150ms linear 0ms, border-color 150ms linear 0ms;
+                //transform: scale(1.02, 1.2);
+    
+                color: #505050;
+                background: #eee;
+                z-index: 99;
+
+                &.selected {
+                    border-color: #4a71a2;
+                }
+            
+                td {
+                    &.func {
+                        transition: all 150ms linear 150ms;
+                        z-index: -1;
+                        opacity: 1;
+    
+                        &.func-view {
+                            transform: translate(-100%, 0%);
+                        }
+                        &.func-order {
+                            transform: translate(-100%, 0%);
+                        }
+                        &.func-delete {
+                            transform: translate(100%, 0%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

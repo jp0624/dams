@@ -1,0 +1,71 @@
+  <div>
+  <h1 class="header" style="clear:both">Filter Page:</h1>
+ <form  class="lesson-form" [formGroup]="fgFilter">
+    <mat-form-field class="lesson-full-width">
+        <mat-select placeholder="Status" formControlName="statuscode">
+          <mat-option *ngFor="let sats of status" [value] ="sats.status_id" >
+            {{sats.name | titlecase}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>   
+    <mat-form-field class="lesson-full-width">
+        <mat-select placeholder="Vehicle Type" formControlName="vehiclecode">
+          <mat-option *ngFor="let vehicle of vehicles" [value] ="vehicle.code" >
+            {{vehicle.name}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>   
+   <mat-form-field class="lesson-full-width">
+      <mat-select placeholder="Country"  formControlName="countrycode">
+        <mat-option *ngFor="let country of countries" [value] ="country.code">
+          {{country.name}}
+        </mat-option>
+      </mat-select>
+   </mat-form-field>
+   <mat-form-field class="lesson-full-width">
+      <mat-select placeholder="Lessons" formControlName="lessoncode">
+        <mat-option *ngFor="let lesson of lessons" [value]="lesson.code" >
+          {{lesson.name}}
+        </mat-option>
+      </mat-select>
+   </mat-form-field>
+  <mat-form-field class="lesson-full-width"> 
+     <mat-select placeholder="Language" formControlName="languagecode">
+       <mat-option *ngFor="let lang of languages" [value] ="lang.code" >
+          {{lang.name}}
+        </mat-option>
+      </mat-select>
+  </mat-form-field>
+  <mat-form-field class="lesson-full-width">
+      <mat-select placeholder="Course" formControlName="coursecode">
+        <mat-option *ngFor="let course of courses" [value] ="course.code">
+           {{course.name}}
+         </mat-option>
+       </mat-select>
+   </mat-form-field>
+   <button (click)="search(fgFilter.value)" > Search </button>
+   </form>
+</div>
+  <div  *ngIf="isProcessingSearchResult == true;" [@taskContentAnimation]="'in'" class="loadingdiv">
+     <mat-spinner [diameter]="20" [mode]="indeterminate" ></mat-spinner>  Loading please wait...
+  </div>
+   <div id="LessonSearch" *ngIf="this?.lessonslist.length>0 && isProcessingSearchResult == false;"  [@taskContentAnimation]="'in'">
+        <h1>Search Results:</h1>
+        <div class="totalRecords">Total Number of Search Results: {{numberOfRecords}}</div>
+      <p-dataTable [value]="this?.lessonslist" [immutable]=false [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+        <p-column field="status" header="Status" [sortable]="true" [filter]="true"></p-column>
+        <p-column field="VechicleType" header="Vechicle Type" [sortable]="true" [filter]="true"></p-column>
+        <p-column field="nameOfCountry" header="Country" [sortable]="true" [filter]="true"></p-column>
+        <p-column field="Lesson" header="Lesson" [sortable]="true" [filter]="true"></p-column>
+        <p-column field="Language" header="Language" [sortable]="true" [filter]="true"></p-column>
+        <p-column field="Course" header="Course" [sortable]="true" [filter]="true"></p-column>
+     </p-dataTable>
+  </div>
+  <div *ngIf="this.lessonslist.length==0 && numberOfRecords == 0;" [@taskContentAnimation]="'in'">
+      <h1>Search Results:</h1>
+      <div  class="noRecordsFound">
+          No Search Results found.
+      </div>
+  </div>
+
+

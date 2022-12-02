@@ -1,0 +1,42 @@
+mat-form-field {
+    width: 100%;
+}
+input[type=submit]{
+    float: right;
+    color: white;
+    background: green;
+    border: solid;
+    border-radius: 10px;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    position: relative;
+    z-index: 5;
+    width: 20%;
+    margin-left: 10px;
+}
+input[type=reset]{
+    float: right;
+    color: darkgray;
+    background: lightgray;
+    border: solid;
+    border-color: lightgray;
+    border-radius: 10px;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    position: relative;
+    z-index: 5;
+    width: 20%;
+}
+.header{
+    margin-bottom: 15px;
+    font-size: 20px;
+    border-bottom-style: solid;
+    border-color: black;
+    border-width: 2px;
+    padding-bottom: 12px;
+}
+.header>span{
+    position: relative;
+    left: 8px;
+    top: -2px;
+}

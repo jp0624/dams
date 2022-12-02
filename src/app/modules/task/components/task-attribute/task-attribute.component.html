@@ -1,0 +1,28 @@
+<!--<ul class="form form-standard" *ngIf="this.attributes" [formGroup]="form">
+  <li *ngFor="let attribute of this.attributes">
+    <label>{{ attribute.label }}</label>
+    <ng-container [ngSwitch]="attribute.element">
+        <textarea *ngSwitchCase="'textarea'"></textarea>
+        <input *ngSwitchCase="'input'" type="text">
+    </ng-container>
+  </li>
+</ul>-->
+
+<div class="task-attribute" [formGroup]="form">
+
+  <!-- <ul class="form form-standard" [ngClass]="{'hasData': course}"> -->
+  <ul class="form form-standard">  
+
+    <li *ngFor="let question of questions" [attr.hidden]="question.type === 'hidden' ? 'hidden' : null" class="form-row">
+
+      <df-question [question]="question" [data]="this.group" [fullForm]="form" [form]="formArray.controls[this.groupIndex]"></df-question>
+
+      <pre>
+        {{ question | json }}
+      </pre>
+    </li>
+
+  </ul>
+
+
+</div>

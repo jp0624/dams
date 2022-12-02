@@ -1,0 +1,62 @@
+<h1>List of Tasks</h1>
+<!--
+  Used to get small list for lesson over view
+-->
+<div *ngIf="this?.lessons">
+  <app-dynamicTable
+    *ngIf="this?.lessons"
+    [attr.db-table]="task"
+    [data]="this.lessons"
+    [primary]="'id'"
+    [section]="'task'"
+    [destination]="this?.destination">
+  </app-dynamicTable>
+</div>
+
+<!--
+  Used to get full list with attributes
+-->
+<div *ngIf="this?.tasks">
+  <!-- 
+  <app-dynamicTable  
+    [attr.db-table]="task"
+    [data]="this.tasks"
+    [primary]="'id'"
+    [section]="'task'"
+    [destination]="this?.destination">
+  </app-dynamicTable>
+
+  <app-pagination 
+    [totalRecords]="totalRecords" 
+    [pageSizeList]="[5, 10, 15, 20, 50, 100, 500]" 
+    [defaultPageSize] = "defaultPageSize"
+    (navButtonClick)="OnNavButtonClick($event)">
+    Loading...
+  </app-pagination> 
+  -->
+
+  <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+    <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+    <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+  </div>
+
+  <p-dataTable [immutable]=false [value]="this.tasks" #pt [lazy]="true" [rows]="5" [globalFilter]="gb" [paginator]="true" 
+    [pageLinks]="3" [totalRecords]="this.totalRecords" 
+    [rowsPerPageOptions]="[5,10,20]" 
+    reorderableColumns="true"  dataKey="id"
+    selectionMode="single" 
+    (onRowSelect)="onRowSelect($event)" 
+    (onLazyLoad)="loadTasksLazy($event)">
+      <p-column field="id" header="id" [sortable]="true"></p-column>
+      <p-column field="name" header="name" [sortable]="true"></p-column>
+      <p-column field="description" header="description" [sortable]="true"></p-column>
+      <p-column field="status" header="status" [sortable]="true"></p-column>
+      <p-column field="type" header="type" [sortable]="true"></p-column>
+      <p-column>
+        <ng-template pTemplate="body" let-task="rowData">
+            <i class="material-icons" (click)='deleteLink($event, task.id, this.gridInfo)'>delete</i>
+        </ng-template>
+      </p-column>
+  </p-dataTable>
+
+</div>

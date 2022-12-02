@@ -1,0 +1,20 @@
+<h1>Task Attr Group</h1>
+<div id="TaskAttrGroup">
+  <p-dataTable [immutable]=false [value]="this?.taskAttrs" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" (onRowSelect)="onRowSelect($event)" selectionMode="single">
+    <p-column field="group_id" header="Id" [sortable]="true" [filter]="true"></p-column>
+    <p-column field="name" header="Name" [sortable]="true" [filter]="true"></p-column>
+    <p-column field="icon" header="Icon" [sortable]="true" [filter]="true"></p-column>
+    <!-- <p-column>
+      <ng-template pTemplate="body" let-taskAttr="rowData">
+        <a [routerLink]="['/task/type/attr/', taskAttr.group_id]">
+          <i class="material-icons">edit</i>
+        </a>
+      </ng-template>
+    </p-column> -->
+    <p-column>
+      <ng-template pTemplate="body" let-taskAttr="rowData">
+        <i class="material-icons" (click)='deleteLink(taskAttr.group_id)'>delete</i>
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+</div>

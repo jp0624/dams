@@ -1,0 +1,70 @@
+<div class='header'>
+    <i _ngcontent-c25="" class="material-icons">{{group.icon}}</i> 
+    <span>{{group.tagname}}</span>  
+</div>
+
+<ng-container *ngIf="attributes; then display; else loading">
+</ng-container>
+
+<ng-template #display>
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" novalidate>
+    <!-- "link_id": 17, "name": "Headings with Content", "group_id": 15, "icon": "remove_from_queue", "Task Type": "Centered Text Only", "child": "content", "type_id": 13 -->
+    <div *ngFor="let item of attributes;">
+      <div class="input-container" [ngSwitch]="item.element" [ngClass]="{'versioning': question?.versioning && !question.version}">
+        <ng-container *ngSwitchCase="'input'">
+            <mat-form-field class="width-style" *ngIf="item.type==='number'" [ngClass]="{'bglightyellow': item.version != 1}">  
+              <input [formControlName]="item?.id" type="number" [id]="item?.id" matInput placeholder="{{item.placeholder}}  {{item.version_name === 'default' ? '' :  '(' + item.version_name + ')' }}">  
+            </mat-form-field>  
+            <mat-form-field class="width-style" *ngIf="item.type!='number'" [ngClass]="{'bglightyellow': item.version != 1}">  
+                <input [formControlName]="item?.id" [id]="item?.id" matInput placeholder="{{item.placeholder}}  {{item.version_name === 'default' ? '' :  '(' + item.version_name + ')' }}">  
+            </mat-form-field>  
+            <mat-error>
+              <span *ngIf="item && !validateField(item.id).valid && validateField(item.id).touched">Please Enter the {{item?.label}} !!!</span>
+            </mat-error>
+
+
+
+            <!-- <mat-form-field class="width-style">  
+              <input [formControlName]="item?.id" [id]="item?.id" matInput placeholder="{{item.placeholder}}">  
+            </mat-form-field>  
+            <mat-error>  
+              <span *ngIf="item && !validateField(item.id).valid && validateField(item.id).touched">Please Enter the {{item?.label}} !!!</span>
+            </mat-error> -->
+          <!-- <div>
+              <input [formControlName]="item?.id" [id]="item?.id" type="text" placeholder="{{item.placeholder}}">
+          </div> -->
+        </ng-container>
+        <!-- <ng-container *ngSwitchCase="'checkbox'">
+          <input type="checkbox" class='checkbox' [checked]="question?.value" (change)="question.value = !question.value" [formControlName]="question?.key" />
+        </ng-container> -->
+        <ng-container *ngSwitchCase="'textarea'">
+          <mat-form-field class="width-style" [ngClass]="{'bglightyellow': item.version != 1}">  
+            <textarea [formControlName]="item?.id" [id]="item?.id" matInput placeholder="{{item.placeholder}}  {{item.version_name === 'default' ? '' :  '(' + item.version_name + ')' }}"></textarea>
+          </mat-form-field>  
+          <mat-error>  
+            <span *ngIf="item && !validateField(item?.id).valid && validateField(item?.id).touched">Please Enter the {{item?.label}} !!!</span>
+          </mat-error>
+        </ng-container>
+        <ng-container *ngSwitchCase="'select'">
+          <div>
+              {{item?.label}}
+          </div>
+          <mat-slide-toggle
+              [checked]="item.value == 'true' || item.value == '1'"
+              class="example-margin"
+              [formControlName]="item?.id">
+          </mat-slide-toggle>
+        </ng-container>
+      </div>
+    </div>
+    <div>
+      <input type="submit" value="Save">
+      <input type="reset" (click)="onReset()" value="Reset"/>
+    </div>
+  </form>
+  
+</ng-template>
+
+<ng-template #loading>
+  Loading...
+</ng-template>

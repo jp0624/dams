@@ -1,0 +1,16 @@
+<ng-template [ngIf]="data && keys">
+  <table class="old cols-{{this?.cols}}">
+    <app-thead [data]="keys"></app-thead>
+    <app-tbody
+    [sortable]="this?.sortable"
+    [selected]="this?.selected"
+    [selectable]="this?.selectable"
+    [linktable]="this?.linktable"
+    [data]="data"
+    [keys]="keys"
+    [primary]="primary"
+    [section]="this?.section"
+    [destination]="this?.destination"
+    (itemsSelected)="selectedItems($event)"></app-tbody>
+  </table>
+</ng-template>

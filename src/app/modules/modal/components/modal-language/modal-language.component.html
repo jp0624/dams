@@ -1,0 +1,15 @@
+<form>
+    <nav class="nav-component nav-component-top">
+        <button class="btn btn-save" (click)="updateCountryLanguages()">
+            <span>Save Changes</span>
+        </button>
+    </nav>
+</form>
+
+<app-language-multiselect-list
+    [destination]="'modal'"
+    [selectable]="true"
+    [country_code]="this?.country_code"
+    [modal]="true"
+    (itemsSelected)="selectedItems($event)">
+</app-language-multiselect-list>

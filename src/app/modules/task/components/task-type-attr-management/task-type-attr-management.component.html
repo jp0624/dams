@@ -1,0 +1,30 @@
+<div class="master-div">
+    <h1 class="header" style="clear:both">Task Attr Group</h1>
+    <form novalidate [formGroup]="taskTypeAttrForm" #thisForm (submit)="onSubmit(taskTypeAttrForm.value)" novalidate>
+      <div class="container" >
+          <!-- type_id -->
+          <div>
+            <custom-input-with-validation [label]="'Name'" [showLabel]="false" [validators]="{required:'Name required', 'minlength': 'Minimum 5 characters required'}" >
+              <mat-form-field class="full-width">
+                <input inputRef matInput placeholder="Name*" formControlName="name" >
+              </mat-form-field>
+            </custom-input-with-validation>
+          </div>
+          <div>
+            <custom-input-with-validation [label]="'Icon'" [showLabel]="false" [validators]="{required:'Icon required'}" >
+                <mat-form-field class="full-width">
+                  <input inputRef matInput placeholder="icon*" formControlName="icon" type="text" >
+                </mat-form-field>
+            </custom-input-with-validation>
+          </div>
+          <div>
+            <i class="material-icons">{{taskTypeAttrForm.value.icon}}</i>
+          </div>
+      </div>
+      <div class='buttons'>
+          <input type="submit" id="btnSubmit" value="Submit" [disabled]="this.taskTypeAttrForm.invalid" />.
+          <input type="button" id="btnReset" value="Reset" (click)="onReset()" />
+          <a routerLink="/task/type/attr/view/list" routerLinkActive="active" class="back-link-green"> Back to List view </a>
+      </div>
+    </form>
+</div>

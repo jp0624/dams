@@ -1,0 +1,27 @@
+<!-- 
+    - group_id
+    - name
+    - description
+-->
+<!-- 
+{{ this?.user | json }} -->
+
+<div [formGroup]="parent">
+  <ul formGroupName="group" class="form form-standard" [ngClass]="{'hasData': group}">
+    <input
+      type="hidden"
+      formControlName="group_id">
+    <li>
+      <label>Group Name:</label>
+      <input
+          type="text"
+          formControlName="name" required>
+    </li>
+    <li>
+      <label>Description:</label>
+      <textarea
+        type="text"
+        formControlName="description" required></textarea>
+    </li>
+  </ul>
+</div>

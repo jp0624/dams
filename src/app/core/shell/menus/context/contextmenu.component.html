@@ -1,0 +1,19 @@
+<ul class="contextmenu">
+  <li>
+    <div>
+      <span class="menu-icon">
+          <i class="material-icons">bookmark</i>
+      </span>
+      <span>Add Dictionary Term</span>
+      <!--<em>Ctrl+Alt+D</em>-->
+      <span class="menu-icon sub-menu">
+          <i class="material-icons">play_arrow</i>
+      </span>
+      <ul class="contextmenu sub-menu">
+        <li *ngFor="let term of this.dictionary">
+          <span>{{ term.term }}</span>
+        </li>
+      </ul>
+    </div>
+  </li>
+</ul>

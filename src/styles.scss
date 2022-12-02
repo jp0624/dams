@@ -1,0 +1,166 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/scss/global.scss';
+
+.mat-form-field-underline{
+    background-color:rgba(87, 85, 85, 0.7) !important;
+}
+
+.mat-form-field.mat-form-field-invalid.ng-untouched .mat-form-field-ripple {
+    background-color:rgba(87, 85, 85, 0.7) !important;
+}
+
+.mat-checkbox-inner-container {
+    background: rgb(173, 173, 173) !important;
+    margin-left: -2px !important;
+}
+
+form input[type="text"] {
+    padding: 0px 0px !important;
+}
+
+.back-link-green {
+    text-decoration: none;
+    color: white;
+    background: green;
+    padding: 16px;
+    border-radius: 5px;
+    float: right;
+}
+
+#DictionaryList .ui-datatable
+{
+    margin-top: 150px !important;
+}
+.mat-tab-label {
+    color:black;
+}
+
+.mat-select-value-text {
+    color: black !important;
+}
+.mat-slide-toggle-bar-no-side-margin {background: rgba(176,190,197,.5);}
+.mat-checked .mat-slide-toggle-bar-no-side-margin { background: green !important}
+
+.mat-tab-group mat-primary {
+    height: 800px !important;
+}
+.mat-tab-body-wrapper {
+    height: 800px !important;
+}
+
+app-task-content-item mat-form-field {
+    width: 100%;
+  }
+  app-task-content-item mat-panel-title {
+    color: black;
+  }
+  app-task-content-item mat-expansion-panel-header {
+    height: 64px;
+    background: white !important;
+    color: black !important;
+    border-width: 2px;
+    border-bottom-style: solid;
+  }
+  app-task-content-item  .mat-form-field-infix input, app-task-content-item  .mat-form-field-infix textarea {
+    margin-top: 11px;
+  }
+  app-task-content-item .mat-expansion-panel-body {
+    background: white !important;
+    color: black !important;
+    padding-top: 10px;
+  }
+  app-task-content-item .mat-expansion-panel-header-title span {
+    padding-left: 20px;
+  }
+  app-task-content-item mat-expansion-panel-header:hover {
+      background: white;
+  }
+  app-task-content-item .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover {
+    background: white;
+    color: black;
+  }
+  app-task-content-item mat-panel-title {
+    color: black !important;
+  }
+
+  app-task-content-item .mat-form-field-label {
+      color: black !important;
+      font-size: 20px;
+      padding-top: 3px;
+  }
+
+  mat-form-field-label-wrapper{
+    margin-top: 15px;
+    font-size: 20px;
+  }
+
+  app-task-content-item mat-expansion-panel-header {
+      margin-top: 20px;
+  }
+
+  mat-dialog-container {
+      background: white !important;
+      color:black !important;
+  }
+
+  app-task-group-modal > .mat-dialog-content {
+    color: black !important;
+  }
+
+  app-task-group-modal .mat-form-field-flex {
+    margin-top: 10px!important;
+}
+app-task-group-modal .mat-form-field-flex label {
+    font-size: 20px!important;
+}
+mat-expansion-panel .mat-slide-toggle-bar.mat-slide-toggle-bar-no-side-margin {
+    background: lightgray;
+}
+mat-expansion-panel .mat-checked .mat-slide-toggle-bar-no-side-margin {
+    background: lightgray !important;
+}
+// .mat-checked .mat-slide-toggle-bar-no-side-margin { background: green !important}
+
+app-task-attr-inputs .mat-form-field-label-wrapper, app-task-attr-inputs-update .mat-form-field-label-wrapper {
+    top: -1.2em !important;
+    height: 35px;
+}
+
+app-task-group-modal .mat-dialog-content {
+    max-height: 100% !important;
+}
+.bglightyellow {
+    background: lightyellow;
+}
+
+.mat-form-field-label {
+    color: black !important;
+}
+.mat-select-placeholder, .mat-select-placeholder:active  {
+    color: black !important;
+}
+
+.mat-form-field-underline:active{
+    background-color: rgba(87, 85, 85, 0.7) !important;
+}
+
+.mat-form-field-ripple, .mat-form-field-ripple:active{
+    background-color: #999 !important;
+    transition: background-color .3s cubic-bezier(0,0,0,.8) !important;
+}
+
+.mat-select-arrow, .mat-select-arrow:active{
+    color: rgba(87, 85, 85, 0.7) !important;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: white !important;
+}
+
+.divTaskContainer mat-expansion-panel-header {
+	border-bottom: 1px solid white;
+}
+
+form .mat-form-field-infix input.ng-invalid {
+    background-color: transparent !important;
+}

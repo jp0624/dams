@@ -1,0 +1,30 @@
+<ng-container *ngIf="typegroups; then display; else loading">
+</ng-container>
+
+<ng-template #display>
+     
+    <!-- "link_id": 17, "name": "Headings with Content", "group_id": 15, "icon": "remove_from_queue", "Task Type": "Centered Text Only", "child": "content", "type_id": 13 -->
+
+     <nav class="dashboard home-dashboard">
+      <ul>
+        <li *ngFor="let item of typegroups">
+          <a (click)="selectGroup(item.group_id, item.link_id, item.name, item.icon)">
+            <i class="material-icons">{{item.icon}}</i>
+            <span>{{item.name}}</span>
+          </a>
+        </li>
+      </ul>
+     </nav>
+
+    <!-- <div *ngFor="let item of typegroups">
+
+        <div (click)="selectedGroup(item.group_id)" style="width: 200px;height: 200px;">
+            <i class="material-icons" aria-label="item.name">
+                {{item.icon}}
+            </i>
+          </div>
+    </div> -->
+
+</ng-template>
+
+<ng-template #loading>Loading...</ng-template>

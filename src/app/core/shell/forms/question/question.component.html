@@ -1,0 +1,74 @@
+<div [formGroup]="form" [ngClass]="{'content-version': question?.version}">
+  <label [attr.for]="question.key">
+    {{question.label}}
+    <ng-container *ngIf="question.version">
+      <span> ({{question?.version}})</span>
+    </ng-container>
+  </label>
+
+  <ng-container *ngIf="question.type === 'image' || question.type === 'video'">
+    <a class="media-modal" (click)="this.modalService.showModal('media', question)">
+      <div class="preview-wrapper" *ngIf="question.type === 'image' && form.controls[question.key].value">
+        <img [src]="this.globalService.assetsurl + form.controls[question.key].value" />
+      </div>
+      <i class="material-icons" *ngIf="question.type === 'image'">panorama</i>
+      <i class="material-icons" *ngIf="question.type === 'video'">movie</i>
+    </a>
+  </ng-container>
+
+  <div class="input-container" [ngSwitch]="question.controlType" [ngClass]="{'versioning': question?.versioning && !question.version}">
+
+    <input *ngSwitchCase="'textbox'" [value]="this?.value || this.question.value" [formControlName]="question?.key" [id]="question.key"
+      [type]="question.type !== 'image' ? question.type : 'text'" [attr.attr]="question?.attr">
+    <!--Checkbox control-->
+    <ng-container *ngSwitchCase="'checkbox'">
+      <input type="checkbox" class='checkbox' [checked]="question?.value" (change)="question.value = !question.value" [formControlName]="question?.key"
+      />
+    </ng-container>
+    <ng-container *ngSwitchCase="'textarea'">
+      <textarea [formControlName]="question?.key" [id]="question.key">
+        {{ this.question?.value }}
+      </textarea>
+      <!--
+      <input
+        type="hidden"
+        [value]="this.tmpValue"
+        [formControlName]="question?.key"
+        [id]="question.key"
+        (select)="view(textarea.selectionStart, textarea.selectionEnd)" #textarea
+        />
+      
+      <div class="input-textarea"
+        (blur)="this.tmpValue=inputContent.innerText"
+        (keyup)="this.tmpValue=inputContent.innerText"
+        (contextmenu)="onRightClick($event)"
+        contenteditable="true"
+        #inputContent
+        dropzone="move">
+        {{ this.question?.value }}
+        <div class="dict-term"
+          contenteditable="false"
+          dropzone="move"
+          draggable="true">
+          <i class="material-icons">bookmark</i>
+          <span>continue</span>
+        </div>
+      </div>
+      <span>{{ this.nRightClicks }} {{ textarea.value.substring(textarea.selectionStart, textarea.selectionEnd) }}</span>
+      -->
+    </ng-container>
+
+    <select [ngModel]="question?.selected" [id]="question?.key" *ngSwitchCase="'dropdown'" [formControlName]="question?.key">
+      <!-- <option [value]="0">Select</option> -->
+      <option *ngFor="let opt of question.options" [value]="opt?.key">{{opt.value}}</option>
+    </select>
+  </div>
+  <ng-container *ngIf="question?.versioning && !question.version">
+    <a class="version" (click)="this.modalService.showModal('task-attr-version', question.key)">
+      <i class="material-icons">exposure</i>
+    </a>
+  </ng-container>
+</div>
+<ng-container *ngIf="!form.controls[question.key]">
+  Control not found for - {{question.key}}
+</ng-container>

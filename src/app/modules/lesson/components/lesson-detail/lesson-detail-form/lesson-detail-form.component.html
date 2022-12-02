@@ -1,0 +1,95 @@
+<!--
+    - lesson_id
+    - Name
+    - Code
+    - Description
+    - Private URL
+    - Status
+    - Vehicle
+-->
+<div class="errorMessage" *ngIf="vehicletypeDuplicateMain">
+    {{ errorMessageDuplicate }}
+</div>
+<div [formGroup]="parent">
+    <ul formGroupName="lesson" class="form form-standard" [ngClass]="{'hasData': lesson}">
+        <input
+          type="hidden"
+          formControlName="id">
+          <li>
+            <label>Lesson Name:</label>
+            <input
+              required
+              type="text"
+              formControlName="name">
+          </li>
+          <li>
+            <label>Description:</label>
+            <textarea
+              type="text"
+              formControlName="description"></textarea>
+          </li>
+          <li>
+            <label>Lesson Code:</label>
+            <input
+                required
+                type="text"
+                formControlName="code"
+                #lesson_code
+                (keyup)="uniqueValue(lesson_code.value)">
+          </li>
+          <li>
+            <label>Private Url:</label>
+            <input
+                type="text"
+                formControlName="url_private">
+          </li>
+          <li>
+            <label>Vehicle:</label>
+            <select
+              required
+              formControlName="vehicle_id" (change) = "versionVehicleValidationSelected();">
+              <option value="">Choose Vehicle</option>
+              <option
+                *ngFor="let vehicle of this.vhs"
+                [value]="vehicle.vehicle_id">
+                {{ vehicle.name }}
+              </option>
+            </select>
+          </li>
+          <li>
+            <label>Type:</label>
+            <select
+              required
+              formControlName="type_id">
+              <option value="">Choose Type</option>
+              <option
+                *ngFor="let type of this.types"
+                [value]="type.type_id">
+                {{ type.name }}
+              </option>
+            </select>
+          </li>
+          <li>
+            <label>Status:</label>
+            <select
+              required
+              formControlName="status_id">
+              <option value="">Choose Status</option>
+              <option
+                *ngFor="let status of this.sts"
+                [value]="status.status_id">
+                {{ status.name }}
+              </option>
+            </select>
+          </li>
+          <!-- <li>           
+            <label>Version:</label>
+            <select formControlName ="version_id" (change) = "versionVehicleValidationSelected();">
+              <option value="">Choose Version</option>
+              <option *ngFor = "let version of this.vrs" [value] = "version.id">
+                {{ version.name }}
+              </option>
+            </select>
+          </li> -->
+    </ul>
+  </div>

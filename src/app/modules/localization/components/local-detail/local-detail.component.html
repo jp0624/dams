@@ -1,0 +1,46 @@
+<pre>{{ this?.params | json }}</pre>
+<pre>{{ this.damForm?.value | json }}</pre>
+
+<form [formGroup]="damForm" (ngSubmit)="onSubmit()">
+  <nav class="nav-component nav-component-top">
+    <button type="submit" class="btn btn-save"> <!--[disabled]="damForm.invalid"-->
+        <span>Save Changes</span>
+    </button>
+    <button
+      *ngIf="this.params.type === 'course' && this.params.id"
+      type="button"
+      class="btn btn-excel"
+      (click)="genExcel()">
+        <span>Generate Template Excel</span>
+        <i class="material-icons">translate</i>
+    </button>
+  </nav>
+
+  <h1>Content Localization</h1>
+  
+  <app-form-local    
+    [parent]="this?.damForm"
+    [params]="this?.params"
+    (paramChanged)="emitChangeParam($event)">
+  </app-form-local>
+
+  <app-form-filter
+    *ngIf="this.localService.country_code && this.localService.lang_code" 
+    [parent]="this?.damForm"
+    [params]="this?.params"
+    (paramsChanged)="emitChangeParams($event)"
+    (damDataChanged)="emitChangeData($event)">
+  </app-form-filter>
+  <!-- <div>above</div> -->
+  <app-form-data
+    [parent]="this?.damForm"
+    [params]="this?.params"
+    [damData]="this?.damData"
+    *ngIf="this.damData?.courseId || this.damData?.lessonId || this.damData?.taskId">
+  </app-form-data>
+
+  <pre>this?.params : {{ this?.params | json }}</pre>
+  <pre>this?.damForm?.value : {{ this?.damForm?.value | json }}</pre>
+  <pre>this?.damData : {{ this?.damData | json }}</pre>
+
+</form>

@@ -1,0 +1,61 @@
+<div class='header'>
+    <i _ngcontent-c25="" class="material-icons">{{icon}}</i> 
+    <span>{{tagname}}</span> 
+</div>
+
+<ng-container *ngIf="attributes; then display; else loading">
+</ng-container>
+
+<ng-template #display>
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" novalidate>
+    
+    <!-- "link_id": 17, "name": "Headings with Content", "group_id": 15, "icon": "remove_from_queue", "Task Type": "Centered Text Only", "child": "content", "type_id": 13 -->
+    <div *ngFor="let item of attributes;">
+      <div class="input-container" [ngSwitch]="item.element" [ngClass]="{'versioning': question?.versioning && !question.version}">
+
+        <ng-container *ngSwitchCase="'input'">
+          <mat-form-field class="width-style" *ngIf="item.type==='number'">  
+            <input [formControlName]="item?.attr_id" type="number" [id]="item?.attr_id" matInput placeholder="{{item.placeholder}}">  
+          </mat-form-field>  
+          <mat-form-field class="width-style" *ngIf="item.type!='number'">  
+              <input [formControlName]="item?.attr_id" [id]="item?.attr_id" matInput placeholder="{{item.placeholder}}">  
+          </mat-form-field>  
+          <mat-error>
+            <span *ngIf="item && !validateField(item.attr_id).valid && validateField(item.attr_id).touched">Please Enter the {{item?.label}} !!!</span>
+          </mat-error>
+        </ng-container>
+       
+        <ng-container *ngSwitchCase="'textarea'">
+          <mat-form-field class="width-style">  
+              <textarea [formControlName]="item?.attr_id" [id]="item?.attr_id" matInput placeholder="{{item?.placeholder}}"></textarea>
+            </mat-form-field>  
+            <mat-error>  
+              <span *ngIf="item && !validateField(item?.attr_id).valid && validateField(item?.attr_id).touched">Please Enter the {{item?.label}} !!!</span>
+            </mat-error>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'select'">
+            <div>
+                {{item?.label}}
+            </div>
+            <mat-slide-toggle
+                  [checked]="item.default_value == '1' || item.default_value == 'true'"
+                  class="example-margin"
+                  [formControlName]="item?.attr_id">
+            </mat-slide-toggle>
+        </ng-container>
+
+      </div>
+    </div>
+    <div>
+      <input type="submit" value="Save">
+    </div>
+  </form>
+
+  <pre>{{ form.value | json}}</pre>
+  <pre>{{ taskid }}</pre>
+</ng-template>
+
+<ng-template #loading>
+  Loading...
+</ng-template>

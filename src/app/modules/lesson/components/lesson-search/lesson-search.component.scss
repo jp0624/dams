@@ -1,0 +1,43 @@
+.lesson-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .lesson-full-width {
+    width: 100%;
+  }
+  .loadingdiv{
+    top:160px;
+    position: relative;
+    text-align:center;
+  }
+  button {
+      background: green;
+      border: none;
+      border-radius: 10px;
+      position: absolute;
+      top: 460px;
+      margin-left: 60px;
+      -webkit-border-radius: 10px;
+  }
+
+  .noRecordsFound { 
+      background-color: #fff;
+      float: left;
+      width: 100%;
+      border-radius: 0px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      text-align: center;
+   }
+
+   .totalRecords{
+     font-weight: bold;
+     padding: 1%;
+   }
+   mat-spinner{
+     display: inline;
+     padding-right: 25px;   
+   }
+  

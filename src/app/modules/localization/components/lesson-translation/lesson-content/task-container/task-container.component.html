@@ -1,0 +1,22 @@
+<div [formGroup]="parentForm" class="divTaskContainer">
+    <mat-expansion-panel [expanded]="toggle">
+        <mat-expansion-panel-header>
+            <div style="color:white;font-size: 23px;"> <i class="material-icons">dns</i> <span style="position:relative;top:-3px;"> Task : {{ this.parentForm.controls['taskname'].value }}</span></div>
+        </mat-expansion-panel-header>
+        <mat-panel-description>
+            <div formArrayName="groups">
+                <div *ngFor="let group of getGroupsFor(taskIndex);let groupIndex=index;">
+                    <app-group-container [formmain]="formmain" [parentForm]="group" [taskIndex]="taskIndex" [groupIndex]="groupIndex">Loading...</app-group-container>
+                </div>
+            </div>
+            <div formArrayName="dictionary" style="margin-top:25px">
+                <ng-container *ngIf="getDictionaryFor(taskIndex).length > 0">
+                    <h2 style="color:white">Dictionary</h2>
+                    <div *ngFor="let dict of getDictionaryFor(taskIndex); let dictIndex=index;">
+                        <app-dictionary-container [parentForm]="dict"></app-dictionary-container>
+                    </div>
+                </ng-container>
+            </div>
+        </mat-panel-description>
+    </mat-expansion-panel>
+</div>

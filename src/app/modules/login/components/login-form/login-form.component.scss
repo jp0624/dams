@@ -1,0 +1,150 @@
+
+
+:host {
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    
+    .login-logo {
+        position: relative;
+        width: 75%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        margin-bottom: 5%;
+    }
+    .login-wrapper {
+
+        width: 35%;
+        min-width: 590px;
+        float: left;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        background: #fff;
+        float: left;
+        position: relative;
+
+        //border-radius: 15px;
+        padding: 2.5% 5%;
+
+        border-bottom: solid #ccc 1px;
+        box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+
+        background: #ffffff;
+        background: -moz-linear-gradient(top,  #ffffff 0%, #edeef0 100%);
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#edeef0 100%);
+        background: linear-gradient(to bottom,  #ffffff 0%,#edeef0 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#edeef0',GradientType=0 );
+        
+        svg {
+            position: relative;
+            width: 75%;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            margin: 5% 0 2.5%;
+
+            //filter: drop-shadow( 0px 5px 5px rgba(0,0,0,0.2) );
+
+            path,
+            .st0,
+            .st1{
+                //fill: #505050;
+            }
+        }
+
+        p {
+            margin: 5% 0 2.5%;
+            width: 100%;
+            position: relative;
+            font-size: 1.45em;
+            text-align: center;
+            color: #e92249;
+            color: #505050;
+        }
+        ul {
+            &.form {
+                width: 100%;
+                position: relative;
+
+                li {
+                    width: 100%;
+                    float: left;
+                    clear: both;
+                    min-height: 3em;
+                    padding: 0.5em 0;
+                    position: relative;
+
+                    label,
+                    input {
+                        float: left;
+                    }
+                    label {
+                        width: 33%;
+                        line-height: 3em;
+                        text-align: right;
+                        padding-right: 2em;
+                        font-size: 1em;
+                    }
+                    input {
+                        width: 66%;
+                        min-height: 3em;
+                        height: 100%;
+                        padding: 0 1em;
+
+                        font-size: 1em;
+                        transition: all 150ms linear 0ms;
+                        border-style: solid;
+                        border-width: 1px;
+                        border-color: #ccc;
+                        border-radius: 0;
+                        color: #777;
+                    }
+                    button {
+                        
+                        //border: 1px solid #ccc;
+                        border: none;
+                        background: #505050;
+                        color: #fff;
+                        padding: 15px 45px;
+                        float: right;
+                        margin: 0 0.5em;
+                        position: relative;
+                        transition: all 150ms linear 0ms;
+                        cursor: pointer;
+                    }
+                }
+    
+            }
+        }
+        
+        .ng-invalid {
+        }
+
+    }
+    
+    @media only screen and (max-width: 960px) {
+        .login-wrapper {
+            width: 85%;
+            min-width: auto;
+            ul {
+                &.form {
+    
+                    li {
+    
+                        label,
+                        input {
+                            text-align: left;
+                            float: left;
+                            clear: both;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

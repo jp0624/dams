@@ -1,0 +1,20 @@
+<div>
+  <button #btnClose id="btnCloseid" target="_blank" rel="noopener noreferrer" (click)="close()">
+    <i class="material-icons">close</i>
+  </button>
+  <div>
+    <mat-form-field>
+      <mat-select placeholder="Select Version" [formControl]="version">
+        <mat-option *ngFor="let vrsn of versions" [value]="vrsn.code">
+          {{vrsn.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div *ngIf="version.value">
+    <div class="btn btn-preview" (click)="preview(version.value)">
+      <span>Preview</span>
+      <i class="material-icons">open_in_browser</i>
+    </div>
+  </div>
+</div>

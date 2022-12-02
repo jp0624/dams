@@ -1,0 +1,62 @@
+
+@keyframes moveUp {
+    0%   {
+        transform: translate(0%, 0%) translateZ(0px);
+        z-index: 99;
+    }
+    65% {
+        transform: translate(0%, -95%) translateZ(-150px);
+         opacity: 0.25;
+         z-index: 99;
+    }
+    75% {
+        transform: translate(0%, -100%) translateZ(25px);
+        opacity: 0.5;
+        z-index: 99;
+    }
+    100% {
+        transform: translate(0%, -100%) translateZ(0px);
+        z-index: 99;
+    }
+}
+@keyframes moveDown {
+    0%   {
+        transform: translate(0%, 0%) translateZ(0px);
+        z-index: 100;
+    }
+    60% {
+        transform: translate(0%, 95%) translateZ(150px);
+        z-index: 100;
+    }
+    75% {
+        transform: translate(0%, 100%) translateZ(-25px);
+        z-index: 100;
+    }
+    100% {
+        transform: translate(0%, 100%) translateZ(0px);
+        z-index: 100;
+    }
+}
+
+ul {
+    position: relative;
+    perspective: 1000px;
+
+    li {
+        transition: transform ease-in 150ms;
+        transform: translate(0%, 0%) translateZ(0px);
+        perspective: 1000px;
+        position: relative;
+        animation-duration: 1000ms;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+        transform-style: preserve-3d;
+        animation-iteration-count: 1;
+        &.up {
+            animation-name: moveUp;
+        }
+        &.down {
+            animation-name: moveDown;
+        }
+    }
+}

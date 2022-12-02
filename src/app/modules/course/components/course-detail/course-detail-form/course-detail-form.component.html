@@ -1,0 +1,58 @@
+<!--
+    data if exists {
+        - course_id
+        - status_id
+        - last_update
+        - name
+        - description
+        - code
+    }
+-->
+
+<pre>{{ this?.course | json }}</pre>
+
+<div [formGroup]="parent">
+  <ul formGroupName="course" class="form form-standard" [ngClass]="{'hasData': course}">
+    <input
+      type="hidden"
+      formControlName="course_id">
+    <li>
+      <label>Course Name:</label>
+      <input
+      required
+          type="text"
+          formControlName="name">
+    </li>
+    <li>
+      <label>Description:</label>
+      <textarea
+        type="text"
+        formControlName="description"></textarea>
+    </li>
+    <li>
+      <label>Course Code:</label>
+      <input
+          required
+          type="text"
+          formControlName="code">
+    </li>
+    <li>
+      <label>Course Status:</label>
+      <select
+        required
+        formControlName="status_id">
+        <option value="">Choose Status</option>
+        <option
+          *ngFor="let status of this.sts"
+          [value]="status.status_id">
+          {{ status.name }}
+        </option>
+      </select>
+      <!--
+      <input
+          type="text"
+          formControlName="status_id">
+      -->
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,145 @@
+.properties {
+    width: 100%;
+
+    li {
+        position:relative;
+
+        background-color: #fff;
+        float: left;
+        width: calc(25% - 1em);
+        border-radius: 0px;
+        margin: 0.5em;
+        border: 1px solid #ccc;
+        
+        color: #777;
+
+        float: left;
+        &.active {
+            color: #fff;
+            background-color: #4a71a2;
+        }
+        a {
+            height: 7em;
+            text-align: center;
+            display: block;
+            text-decoration: none;
+
+            &.prop-link {
+                padding: 0.5em;
+                width: 100%;
+                position: relative;
+
+                span {
+                    width: 100%;
+                    float: left;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+
+                    i {
+                        font-size: 2em;
+                    }
+                }
+            }
+            
+        }
+
+        /*
+        &:nth-child(4n) {
+            margin-right: 0;
+        }
+        &:nth-child(4n - 3) {
+            margin-left: 0;
+        }
+        */
+        &:nth-child(4),
+        &:nth-child(6){
+            clear: both;
+        }
+        // &:nth-child(4n + 1){
+        //     clear: both;
+
+        // }
+    }
+}
+.langs-avail {
+    
+    .lang-avail {
+        position:relative;
+
+        background-color: #fff;
+        float: left;
+        width: calc(25% - 1em);
+        border-radius: 0px;
+        margin: 0.5em;
+        border: 1px solid #ccc;
+        
+        float: left;
+        
+        a {
+            display: block;
+            text-decoration: none;
+
+            &.lang-link {
+                padding: 20px;
+                width: 100%;
+                color: #777;
+            }
+            
+        }
+
+        /*
+        &:nth-child(4n) {
+            margin-right: 0;
+        }
+        &:nth-child(4n - 3) {
+            margin-left: 0;
+        }
+        */
+        &:nth-child(1){
+            clear: both;
+        }
+        &:nth-child(4n + 1){
+            clear: both;
+
+        }
+    }
+}
+.setting-wrapper {
+    width: 90%;
+    margin: 0 5%;
+}
+.option-wrapper {
+    width: 33%;
+    float: left;
+    
+    //color: #b51a39;
+    label {
+        width: 50%;
+        float: left;
+        padding: 0 5%;
+        text-align: right;
+        line-height: 37px;
+    }
+    select {
+        width: 50%;
+        float: left;
+        height: 37px;
+        padding: 0 10px;
+        border: 1px solid #ccc;
+
+        transition: all 150ms ease-in-out;
+        option {
+            padding: 0 10px;
+        }
+        
+        &:hover {
+            border: 1px solid #ccc;
+        }
+        &:focus {
+            border: 1px solid #777;
+            outline: none;
+        }
+    }
+}

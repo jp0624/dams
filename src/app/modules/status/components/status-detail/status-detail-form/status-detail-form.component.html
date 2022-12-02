@@ -1,0 +1,35 @@
+<!--
+    - status_id
+    - name
+    - description
+    - hexcode
+-->
+
+<!-- {{ this?.language | json }} -->
+
+<div [formGroup]="parent">
+  <!-- <ul formGroupName="status" class="form form-standard" [ngClass]="{  'hasData': language}"> -->
+  <ul formGroupName="status" class="form form-standard">
+    <input
+      type="hidden"
+      formControlName="status_id">
+    <li>
+      <label>Status Name:</label>
+      <input
+          type="text"
+          formControlName="name" required>
+    </li>
+    <li>
+      <label>Description:</label>
+      <textarea
+        type="text"
+        formControlName="description" required></textarea>
+    </li>
+    <li>
+      <label>Hexcode:</label>
+      <input
+          type="text"
+          formControlName="hexcode" required>
+    </li>
+  </ul>
+</div>

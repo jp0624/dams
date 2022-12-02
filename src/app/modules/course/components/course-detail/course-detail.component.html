@@ -1,0 +1,72 @@
+<!--
+    - course_id
+    - status_id
+    - last_update
+    - name
+    - description
+    - code
+-->
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+    <nav class="nav-component nav-component-top">
+        <button type="submit" class="btn btn-save" [disabled]="form.invalid">
+            <span>Save Changes</span>
+        </button>
+        <button *ngIf="this.course?.course_id" class="btn btn-localize" [routerLink]="['/localization/course/' + this.course.course_id + '/en']" routerLinkActive="active"> <!--</button> (click)="localizeTask()">-->
+            <span>Localize</span>
+        </button>
+    </nav>
+
+    <h1>Course Details</h1>
+    <ng-container *ngIf="this?.course">
+        <app-course-detail-form
+            [course]="this?.course"
+            [class]="'component component-form'"
+            [parent]="form"
+            [sts]="this.sts">
+        </app-course-detail-form>
+    </ng-container>
+
+    <pre>{{ form.value | json }}</pre>
+
+    <ng-container *ngIf="this.course?.course_id">
+        <pre>Course ID: {{this.course?.course_id}}</pre>
+        
+        <h1>Lessons</h1>
+        <pre>{{ this?.lessons | json }}</pre>
+
+        <ng-container *ngIf="this?.lessons && this?.course">
+            <app-dynamicTable
+                [attr.db-table]="lesson"
+                [data]="this.lessons"
+                [primary]="'id'"
+                [section]="'lesson'"
+                [sortable]="true"
+                [linktable]="'course_lesson'">
+            </app-dynamicTable>
+        </ng-container>
+        
+        <ng-container *ngIf="!this?.lessons || !this?.course">
+            <div class="alertBox warning">
+                There are currently no lessons in this course.
+            </div>
+        </ng-container>
+
+        <nav class="nav-component">
+            <a (click)="this.modalService.showModal('lesson', this.course.course_id)" class="btn btn-standard">
+                <span>Add Lesson</span>
+            </a>
+        </nav>
+
+    </ng-container>
+    <nav class="nav-component nav-component-top">
+        <button type="submit" class="btn btn-save" [disabled]="form.invalid">
+            <span>Save Changes</span>
+        </button>
+        <button *ngIf="this.course?.course_id" class="btn btn-localize" [routerLink]="['/localization/course/' + this.course.course_id + '/en']" routerLinkActive="active"> <!--</button> (click)="localizeTask()">-->
+            <span>Localize</span>
+        </button>
+    </nav>
+
+</form>

@@ -1,0 +1,13 @@
+<div class='pag-main'>
+    <span>Show</span>  &nbsp;
+    <select [(ngModel)]="sizeLocal" (change)="OnSelectChange()">
+        <option *ngFor="let x of pageSizeList" [value]="x" [selected]="sizeLocal == x">{{x}}</option>
+    </select> &nbsp;
+    <span>Items</span> &nbsp;
+    <button (click)="paginationClick('First')" [disabled]="this.page === 1"> << </button>
+    <button (click)="paginationClick('Previous')" [disabled]="this.page === 1"> < </button>
+    <span>{{page}} of {{pageCount}} pages - {{ ((page-1)*size) + 1 }} - 
+      {{ (+(((page-1)*size) + size) > totalRecords) ? totalRecords : +(((page-1)*size) + size)  }} of {{totalRecords}} Items </span>
+    <button (click)="paginationClick('Next')" [disabled]="this.page === this.pageCount"> > </button>
+    <button (click)="paginationClick('Last')" [disabled]="this.page === this.pageCount"> >> </button>
+ </div>

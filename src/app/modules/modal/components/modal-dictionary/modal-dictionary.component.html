@@ -1,0 +1,14 @@
+<form>
+    <nav class="nav-component nav-component-top">
+        <button class="btn btn-save" (click)="updateTaskTerms()">
+            <span>Save Changes</span>
+        </button>
+    </nav>
+</form>
+<app-dictionary-multiselect-list
+    [destination]="'modal'"
+    [task_id]="this?.task_id"
+    [selectable]="true"
+    [modal]="true"
+    (itemsSelected)="selectedItems($event)">
+</app-dictionary-multiselect-list>

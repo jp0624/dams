@@ -1,0 +1,48 @@
+<!--
+    - user_id
+    - name
+    - user_type
+    - email
+-->
+<!-- <pre>{{ this?.user || json }}</pre> -->
+
+<div [formGroup]="parent">
+  <ul formGroupName="user" class="form form-standard" [ngClass]="{'hasData': user}">
+    <input
+      type="hidden"
+      formControlName="user_id">
+    <input
+      type="hidden"
+      [value]="user?.hash"
+      formControlName="hash">
+    <li>
+      <label>User Name:</label>
+      <input
+          type="text"
+          formControlName="name"
+          required>
+    </li>
+    <li>
+      <label>User Type:</label>
+      <select formControlName="group_id" required name="group_id">
+        <option [ngValue]="0">Select user group</option>
+        <option *ngFor="let group of groups; let i = index" [ngValue]="group.group_id" >{{ group?.name }}</option>
+      </select>
+    </li>
+    <li>
+      <label>Email:</label>
+      <input
+          type="email"
+          formControlName="email"
+          [email]="true" 
+          required>
+    </li>
+    <li>
+      <label>Password:</label>
+      <input
+          type="password"
+          formControlName="password" 
+          required>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,12 @@
+<section>
+    <h1>List of Translations</h1>
+    
+    <app-dynamicTable
+      *ngIf="this.translationService?.translationList"
+      [attr.db-table]="translation"
+      [data]="this.translationService?.translationList"
+      [primary]="'translation_id'"
+      [section]="'translation'">
+    </app-dynamicTable>
+    
+  </section>

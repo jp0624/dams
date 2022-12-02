@@ -1,0 +1,16 @@
+<div [formGroup]="parentForm">
+    <!-- <input formControlName="content_id" />
+    <input formControlName="term" />
+    <input formControlName="translation_id" />
+    <input formControlName="value" />
+    <input formControlName="task_id" />
+    <input formControlName="task_dictionary_id" />
+    <input formControlName="isnew" />
+    <input formControlName="altered" /> -->
+    <div style="clear:both">{{ this.parentForm.controls['term'].value }} ({{ this.parentForm.controls['content_id'].value }})</div>
+    <div class='container'>
+        <input formControlName="term" style="width:47%;float: left;" />  
+        <a (click)="copyValue(this.parentForm)" class="copy-value"><i class="material-icons">input</i></a> 
+        <input formControlName="value" style="width:47%;float: left;" />
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<form>
+<nav class="nav-component nav-component-top">
+    <button class="btn btn-save" (click)="updateVersions()">
+      <span>Save Changes</span>
+    </button>
+</nav>
+</form>
+
+<h1>Variation Selection</h1>
+<nav class="dashboard">
+  <ul>
+      <ng-container *ngFor="let version of this.vers, let i = index">
+        <li *ngIf="version.version_id !== 1" [ngClass]="{'active': version.status}">
+          <a (click)="version.status ? removeVersion(i) : addVersion(i)">
+            <i class="material-icons">{{version.icon}}</i>
+            <span>{{version.name}}</span>
+          </a>
+        </li>
+      </ng-container>
+  </ul>
+</nav>

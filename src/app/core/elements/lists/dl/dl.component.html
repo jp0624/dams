@@ -1,0 +1,10 @@
+<dl>
+  <ng-container *ngFor="let key of keys; let odd='odd'; let even='even'">    
+      <dt [ngClass]="{ odd: odd, even: even }">{{ key }}</dt>
+      <dd [ngClass]="{ odd: odd, even: even }">
+        <input *ngIf="this.editable" type="text" [attr.name]="key" #input value="{{this.data[key]}}" ngModel="input" (change)="inputChange()">
+        <span *ngIf="!this.editable">{{this.data[key]}}</span>
+      </dd>
+  </ng-container>
+</dl>
+<button *ngIf="this.editable && this.inputChanges" class="saveChanges">Save Changes</button>

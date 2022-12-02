@@ -1,0 +1,18 @@
+<div class="message-wrapper type-{{this.messagingService.messageType}}" (click)="this.messagingService.hideMessage()">
+    <div class="message-frame" click-stop-propagation>
+        
+      <!--
+        <a (click)="this.messagingService.hideMessage()" class="close">
+            <i class="material-icons">clear</i>
+        </a>
+      -->
+        <div class="message-content">
+          <h1>
+              {{ this.messagingService?.title }}
+          </h1>
+          <p>
+            {{ this.messagingService?.message }}
+          </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+mat-form-field {
+    left: 20% !important;
+    margin: 2em .1em;
+}
+.btn-preview {
+    background-color: #4ba355;
+    padding: 11px 41px;
+    border: none;
+    color: #fff;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-decoration: none;
+    float: left;
+    margin: -1em .1em;
+    position: relative;
+    transition: all 150ms linear 0ms;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.btn-preview i {
+    position: relative;
+    left: -9px;
+    font-size: 22px;
+    top: 4px;
+    padding-left: 7px;
+}
+.btn-preview span {
+    position: relative;
+    left: -4px;
+    top: -2px;
+}
+
+button{
+    position: relative;
+    right: 0px;
+    left: 290px;
+    top: -16px;
+    border: none;
+    background: transparent;
+    font-size: 23px;
+}

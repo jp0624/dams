@@ -1,0 +1,25 @@
+.active {
+    color: green;
+}
+.active:hover {
+    color: rgb(1, 187, 1);
+    transform: scaleX(1.1);
+}
+.inactive {
+    color: #FFCC33;
+}
+
+table.dataTable thead .sorting:nth-child(7), 
+table.dataTable thead .sorting_asc:nth-child(7), 
+table.dataTable thead .sorting_desc:nth-child(7),
+table.dataTable thead .sorting:nth-child(8), 
+table.dataTable thead .sorting_asc:nth-child(8), 
+table.dataTable thead .sorting_desc:nth-child(8) {
+    background : none;
+}
+
+.material-icons:hover{
+    transform: scaleX(1.1);
+    cursor: pointer;
+}
+

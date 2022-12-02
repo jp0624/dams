@@ -1,0 +1,27 @@
+<div class="master-div">
+    <h1 class="header" style="clear:both">Lesson Type</h1>
+    <form novalidate [formGroup]="lessonTypeForm" #thisForm (submit)="onSubmit(lessonTypeForm.value)" novalidate>
+      <div class="container" >
+          <!-- type_id -->
+          <div>
+            <custom-input-with-validation [label]="'Name'" [showLabel]="false" [validators]="{required:'Name required', 'minlength': 'Minimum 5 characters required'}" >
+              <mat-form-field class="full-width">
+                <input inputRef matInput placeholder="Name*" formControlName="name" >
+              </mat-form-field>
+            </custom-input-with-validation>
+          </div>
+          <div>
+            <custom-input-with-validation [label]="'Description'" [showLabel]="false" >
+                <mat-form-field class="full-width">
+                  <input inputRef matInput placeholder="description" formControlName="description" type="text" >
+                </mat-form-field>
+            </custom-input-with-validation>
+          </div>
+      </div>
+      <div class='buttons'>
+          <input type="submit" id="btnSubmit" value="Submit" [disabled]="this.lessonTypeForm.invalid" />.
+          <input type="button" id="btnReset" value="Reset" (click)="onReset()" />
+          <a routerLink="/lesson/type/list" routerLinkActive="active" class="back-link-green"> Back to List view </a>
+      </div>
+    </form>
+</div>

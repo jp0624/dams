@@ -1,0 +1,9 @@
+<h1>List of Groups</h1>
+
+<div id="GroupList">
+  <p-dataTable [value]="this?.groups" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" (onRowSelect)="onRowSelect($event)" selectionMode="single">
+      <p-column field="group_id" header="Status ID" [sortable]="true" [filter]="true"></p-column>
+      <p-column field="name" header="Name" [sortable]="true" [filter]="true"></p-column>
+      <p-column field="description" header="Description" [sortable]="true" [filter]="true"></p-column>
+  </p-dataTable>
+</div>

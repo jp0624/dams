@@ -1,0 +1,27 @@
+<div>
+  <button #btnClose id="btnCloseid" target="_blank" rel="noopener noreferrer" (click)="close()">
+    <i class="material-icons">close</i>
+  </button>
+  <div>
+    <mat-form-field>
+      <mat-select placeholder="Select Course" (selectionChange)="exportExcelData(course.value)" [formControl]="course">
+        <mat-option *ngFor="let coursee of courses" [value]="coursee.id">
+          {{coursee.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="loading" *ngIf="isProcessing">
+    Processing..please wait
+  </div>
+  <div *ngIf="fileName">
+    <!-- <span>File Name : </span> <span>{{fileName}}</span> -->
+    <!-- <a href="{{fileName}}">
+      <img src="../../../../../../assets/img/microsoft-excel-icons-xls.jpg" />
+    </a> -->
+    <a class="btn btn-download" target="_blank" rel="noopener noreferrer" href="{{fileName}}">
+      <i class="material-icons">file_download</i>
+      <span>Download</span>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<!--
+    - user_id
+    - name
+    - user_type
+    - email
+-->
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  
+  <nav class="nav-component nav-component-top">
+    <button type="submit" class="btn btn-save" [disabled]="form.invalid">
+        <span>Save Changes</span>
+    </button>
+  </nav>
+
+  <h1>User Details</h1>
+  <ng-container>
+    <app-user-detail-form
+        [user]="this?.user"
+        [class]="'component component-form'"
+        [parent]="this.form"
+        [groups]="this?.groups">
+    </app-user-detail-form>
+  </ng-container>
+
+  <pre>{{ form.value | json }}</pre>
+
+  <nav class="nav-component">
+    <button type="submit" class="btn btn-save">
+        <span>Save Changes</span>
+    </button>
+  </nav>
+</form>

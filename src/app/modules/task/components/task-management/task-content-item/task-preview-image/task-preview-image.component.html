@@ -1,0 +1,9 @@
+<div style="float:left;width:40px;position:relative;" id="imageicon">
+    <a class="media-modal" *ngIf="content.type=='image' && content.value!=''">
+      <div class="preview-wrapper" [ngClass]="{'showImage': mouseover}">
+          <img [src]="this.globalService.assetsurl + content.value" />
+      </div>
+      <i class="material-icons imagepreview" (mouseover)="mouseover=true" (mouseout)="mouseover=false">panorama</i>
+    </a>
+    &nbsp;
+</div>

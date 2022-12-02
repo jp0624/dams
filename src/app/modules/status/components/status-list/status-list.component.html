@@ -1,0 +1,14 @@
+<h1>List of Status</h1>
+<div id="StatusList">
+  <p-dataTable [immutable]=false [value]="this?.statuses" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" (onRowSelect)="onRowSelect($event)" selectionMode="single">
+    <p-column field="status_id" header="Status ID" [sortable]="true" [filter]="true"></p-column>
+    <p-column field="name" header="Name" [sortable]="true" [filter]="true"></p-column>
+    <p-column field="description" header="Description" [sortable]="true" [filter]="true"></p-column>
+    <p-column field="hexcode" header="Hexcode" [sortable]="true" [filter]="true"></p-column>
+    <p-column>
+      <ng-template pTemplate="body" let-status="rowData">
+          <i class="material-icons" (click)='deleteLink($event, status.status_id)'>delete</i>
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+</div>

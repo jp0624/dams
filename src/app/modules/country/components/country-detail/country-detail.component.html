@@ -1,0 +1,51 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  
+  <nav class="nav-component nav-component-top">
+    <button type="submit" class="btn btn-save" [disabled]="form.invalid">
+        <span>Save Changes</span>
+    </button>
+  </nav>
+
+  <h1>Country Details</h1>
+  <ng-container *ngIf="this?.country">
+    <app-country-detail-form
+        [country]="this?.country"
+        [class]="'component component-form'"
+        [parent]="form">
+    </app-country-detail-form>
+  </ng-container>
+
+  <ng-container *ngIf="this?.countryLanguages">
+    <h1>Languages</h1>
+    <app-language-list [countryLanguages]="countryLanguages"></app-language-list>
+  </ng-container>
+
+  <nav class="nav-component" *ngIf="this.country?.country_id">
+      <a (click)="this.modalService.showModal('language', this.country?.code)" class="btn btn-standard">
+          <span>Add Language</span>
+      </a>
+  </nav>
+  
+  <ng-container *ngIf="this?.props">
+    <h1>Variations</h1>
+    <ul class="properties">
+        <ng-container *ngFor="let property of this.props, let i = index">
+          <li *ngIf="property.property_id !== 1 && property.property_id !== 2" [ngClass]="{'active': property.status}">
+            <a (click)="property.status ? removeProperty(i) : addProperty(i)" class="prop-link">
+              <span>
+                {{ property.name }}
+              </span>
+            </a>
+          </li>
+        </ng-container>
+    </ul>
+  </ng-container>
+
+  <pre>{{ form.value | json }}</pre>
+
+  <nav class="nav-component">
+      <button type="submit" class="btn btn-save">
+          <span>Save Changes</span>
+      </button>
+  </nav>
+</form>

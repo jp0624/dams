@@ -1,0 +1,7 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <app-login-form
+    [parent]="form"
+  >
+  </app-login-form>
+</form>
+<pre>{{form.value | json}}</pre>

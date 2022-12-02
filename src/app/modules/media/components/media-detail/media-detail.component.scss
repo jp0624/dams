@@ -1,0 +1,31 @@
+figure,
+figcaption {
+    float: left;
+    width: 48%;
+    margin: 0 1%;
+}
+video,
+img {
+    position: relative;
+    float: left;
+    width: 100%;
+}
+
+.btn-download {
+    background-color: #4ba355;
+    padding: 15px 45px;
+    border: none;
+    color: #fff;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-decoration: none;
+    float: left;
+    margin: 0 0.5em;
+    position: relative;
+    transition: all 150ms linear 0ms;
+    cursor: pointer;
+
+    &:hover {
+        transform:  translate(-50%, 0) scale(1.085);
+    }
+}

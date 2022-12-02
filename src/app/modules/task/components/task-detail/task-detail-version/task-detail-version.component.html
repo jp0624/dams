@@ -1,0 +1,57 @@
+<ng-container *ngIf="this?.task">
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+
+
+        <nav class="nav-component nav-component-top">
+
+            <button type="submit" class="btn btn-save" [disabled]="taskForm.invalid">
+                <span>Save Changes</span>
+            </button>
+            <button class="btn btn-save" (click)="formValues()">
+                <span>Post form Values</span>
+            </button>
+
+        </nav>
+
+        <h1>Task Details</h1>
+
+        <ng-container *ngIf="this?.task">
+            <app-task-detail-form [task]="this.task" [class]="'component component-form'" [sts]="this.sts" [vhs]="this.vhs" [tts]="this.tts"
+                [questions]="this.questions" [form]="this.taskForm" [formGroup]="this.taskForm.controls.taskMeta">
+            </app-task-detail-form>
+        </ng-container>
+
+        <pre>{{ this.taskForm.value | json }}</pre>
+        <div>{{ this.questions | json }}</div>
+
+        <h1>Task Content</h1>
+        <!--
+          <pre>{{ this?.lessons | json }}</pre>
+          -->
+        <ul class="vers">
+
+            <li class="ver ver-template">
+                <ng-container *ngIf="this?.task">
+                    <app-task-type [task]="this.task" [form]="this.taskForm" [formArray]="this.taskForm.controls.taskContent">
+                    </app-task-type>
+                </ng-container>
+            </li>
+
+            <li class="ver ver-active">
+                <ng-container *ngIf="this?.task">
+                    <app-task-type [task]="this.task" [form]="this.taskForm" [formArray]="this.taskForm.controls.taskContent">
+                    </app-task-type>
+                </ng-container>
+            </li>
+
+        </ul>
+
+        <pre>{{ this.taskForm?.value | json }}</pre>
+        <nav class="nav-component">
+            <button type="submit" class="btn btn-save">
+                <span>Save Changes</span>
+            </button>
+        </nav>
+
+    </form>
+</ng-container>

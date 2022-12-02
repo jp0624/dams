@@ -1,0 +1,64 @@
+<div>
+    <button target="_blank" rel="noopener noreferrer" (click)="close()" title="Close" class="buttonclose">
+      <i class="material-icons">close</i>
+    </button>
+    <div class="loadingdiv"  *ngIf="isProcessingCopyLesson">
+         <mat-spinner [diameter]="20" [mode]="indeterminate" ></mat-spinner>  Processing please wait...
+    </div>
+    <div class="errorMessage" *ngIf="vehicletypeDuplicate">
+        {{ errormessage }}     
+   </div>
+    <div class="copy-lesson-form" [formGroup] = "copyLessonForm">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Lesson Name"  formControlName="name" required>
+          <mat-error *ngIf="copyLessonForm.controls['name'].errors?.required &&
+          copyLessonForm.controls['name'].touched">Lesson name is required</mat-error>        
+        </mat-form-field>      
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Description"  formControlName="description" rows="5"></textarea>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Lesson Code"  formControlName="code" readonly>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+           <input matInput placeholder="Private Url" formControlName="url_private">
+        </mat-form-field>
+        <mat-form-field class="full-width"> 
+            <mat-select placeholder="Vehicle Type" formControlName="vehicle_id" required>     <!--(selectionChange)="versionVehicleValidationSelected();"-->       
+              <mat-option  *ngFor="let vehicle of this.data.vehicle" [value]="vehicle.vehicle_id"> 
+                    {{ vehicle.name }}
+              </mat-option>
+            </mat-select>
+           <mat-error *ngIf="copyLessonForm.controls['vehicle_id'].errors?.required &&
+                copyLessonForm.controls['vehicle_id'].touched">Vehicle Type is required</mat-error>               
+        </mat-form-field>  
+        <mat-form-field class="full-width">
+            <mat-select placeholder="Type" formControlName="type_id" required>
+                <mat-option *ngFor="let type of this.data.types" [value]="type.type_id">
+                   {{ type.name }}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="copyLessonForm.controls['type_id'].errors?.required &&
+                copyLessonForm.controls['type_id'].touched">Type is required</mat-error>              
+        </mat-form-field>  
+        <mat-form-field class="full-width">
+            <mat-select placeholder="Status" formControlName="status_id" required>
+                <mat-option *ngFor="let status of  this.data.status" [value]="status.status_id">
+                  {{ status.name }}
+                 </mat-option>
+            </mat-select>
+             <mat-error *ngIf="copyLessonForm.controls['status_id'].errors?.required &&
+                copyLessonForm.controls['status_id'].touched">Status is required</mat-error>
+        </mat-form-field>  
+        <!-- <mat-form-field class="full-width">
+           <mat-select placeholder="Choose Version" formControlName="version_id"  (selectionChange)="versionVehicleValidationSelected();">
+              <mat-option  *ngFor="let version of  this.data.version"  [value]="version.id">
+                {{ version.name }}
+               </mat-option>
+            </mat-select>
+        </mat-form-field>   -->
+            <button type="button" class="savebutton btnWidth" mat-raised-button title="Save" (click)="copyLessonSave(copyLessonForm.value)" [disabled]="!copyLessonForm.valid || !(vehicletypeDuplicate == false && this.disableSaveButton == false)">Save</button>
+            <button type="button" class = "btnWidth" mat-raised-button title="Cancel" (click)="onCancelClick()">Cancel</button>
+            <a (click) = "goCopiedLessonLink(this.newLessonId);" class="CopyLink" title="To click and view the copied lesson" *ngIf="copiedLesson == true;"> Copied Lesson Link </a>
+        </div>
+  </div>

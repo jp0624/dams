@@ -1,0 +1,15 @@
+<div [formGroup]="parentForm" style="clear:both;padding-top:20px;">
+  <div style="color: white;padding-bottom:20px;font-size:25px;"> <i _ngcontent-c22="" class="material-icons">{{ this.parentForm.controls['icon'].value }}</i>
+    <span class='grouptitle'>Group : {{ this.parentForm.controls['name'].value }}</span>
+  </div>
+  <!-- <input formControlName="id" />
+  <input formControlName="name" /> -->
+  <!-- <div> {{ this.parentForm.controls['id'].value }}</div>
+  <div> {{ this.parentForm.controls['name'].value }}</div> -->
+  <!-- <div style="color: white"><h3>Attribute</h3></div> -->
+  <div formArrayName="attributes">
+    <div *ngFor="let attribute of getAttributesFor();let attributeIndex=index;">
+      <app-attribute-container [formmain]="formmain" [parentForm]="attribute" [taskIndex]="taskIndex" [groupIndex]="groupIndex"></app-attribute-container>
+    </div>
+  </div>
+</div>

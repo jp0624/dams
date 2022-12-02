@@ -1,0 +1,26 @@
+<h2><i class="material-icons">assignment</i> Course: {{this.course?.name}}</h2>
+<dl *ngIf="this.course" class="component">
+    <ng-container *ngIf="this.course?.description">    
+        <dt>
+        <span>Description:</span>
+        </dt>
+        <dd>
+            <span>{{this.course?.description}}</span>
+        </dd>
+    </ng-container>
+    <dt>
+      <span>Course Code:</span>
+    </dt>
+    <dd>
+        <span>{{this.course?.code}}</span>
+    </dd>
+</dl>
+<ng-container *ngFor="let lesson of this.lessons; let i of index">
+    <app-form-lesson
+      [parent]="this?.parent"
+      [params]="this?.params"
+      [damData]="this?.damData"
+      [lessonId]="lesson.id"
+    >
+    </app-form-lesson>
+</ng-container>

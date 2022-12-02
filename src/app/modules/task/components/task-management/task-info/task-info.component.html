@@ -1,0 +1,85 @@
+<style>
+  .width-style {
+    width:100%;
+  }
+  input[type=submit] {
+    width: 200px;
+    background: green;
+    color:white;
+  }
+</style>
+<div>
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit(taskForm.value)" id="frmTask" novalidate style="padding:50px;padding-bottom: 80px;" class="width-style">
+      <mat-form-field class="width-style">  
+          <input formControlName="name" matInput placeholder="Task Name">  
+      </mat-form-field>  
+      <mat-error>  
+          <span *ngIf="!taskForm.get('name').valid && taskForm.get('name').touched">Please Enter Task Name !!!</span>  
+      </mat-error>
+      <mat-form-field class="width-style">  
+          <textarea formControlName="description" matInput placeholder="Description"></textarea>
+      </mat-form-field>  
+      <mat-error>  
+          <span *ngIf="!taskForm.get('description').valid && taskForm.get('description').touched">Please Enter Task description !!!</span>  
+      </mat-error>
+      <mat-form-field class="width-style">  
+          <input type="number" formControlName="lock_time" matInput placeholder="Lock Time">  
+      </mat-form-field>  
+      <mat-error>  
+          <span *ngIf="!taskForm.get('description').valid && taskForm.get('description').touched">Please Enter lock time!!!</span>  
+      </mat-error>
+      <div>Display Nav</div>
+      <mat-slide-toggle
+            class="example-margin"
+            formControlName="display_innav">
+      </mat-slide-toggle>
+      <div>Display Main</div>
+      <mat-slide-toggle
+            class="example-margin"
+            formControlName="display_main">
+      </mat-slide-toggle>
+      <div>Display Next</div>
+      <mat-slide-toggle
+            class="example-margin"
+            formControlName="display_next">
+      </mat-slide-toggle>
+      <mat-form-field class="width-style">
+          <mat-select placeholder="Status" formControlName="status_id" required>
+            <mat-option [value]="'0'">Select</mat-option>
+            <mat-option *ngFor="let stat of status" [value]="stat.status_id">
+              {{stat.name}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+      <mat-error>  
+          <span *ngIf="!taskForm.get('status_id').valid && taskForm.get('status_id').touched">Please Select Status!!!</span>  
+      </mat-error>
+      <mat-form-field class="width-style">
+          <mat-select placeholder="Task Type" formControlName="type_id" required [disabled]="task.task_id>0">
+            <mat-option [value]="'0'">Select</mat-option>
+            <mat-option *ngFor="let type of tasktype" [value]="type.type_id">
+              {{type.name}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+      <mat-error>  
+          <span *ngIf="!taskForm.get('type_id').valid && taskForm.get('type_id').touched">Please Select Task type!!!</span>  
+      </mat-error>
+      <mat-form-field class="width-style">
+          <mat-select placeholder="Lock Type" formControlName="lock_type_id" required>
+            <mat-option [value]="'0'">Select</mat-option>
+            <mat-option *ngFor="let lock of locktype" [value]="lock.lock_type_id">
+              {{lock.name}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+      <mat-error>  
+          <span *ngIf="!taskForm.get('lock_type_id').valid && taskForm.get('lock_type_id').touched">Please Select Lock type!!!</span>  
+      </mat-error>
+
+      <input type="submit" value="Save changes"/>
+      <input type="reset" (click)="onReset()" value="Reset" style="width: 200px;margin-left: 20px;"/>
+
+    
+  </form>
+</div>

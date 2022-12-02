@@ -1,0 +1,12 @@
+<app-table
+    *ngIf="this?.data && this?.keys"
+    [linktable]="this?.linktable"
+    [selected]="this?.selected"
+    [selectable]="this?.selectable"
+    [data]="this.data"
+    [keys]="this.keys"
+    [primary]="this?.primary"
+    [sortable]="this?.sortable"
+    [section]="this?.section"
+    [destination]="this?.destination"
+    (itemsSelected)="selectedItems($event)"></app-table>

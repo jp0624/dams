@@ -1,0 +1,22 @@
+.padding-top-20 {
+    padding-top: 20px;
+}
+.visiblehidden{
+    visibility: hidden;
+}
+#btnUpload {
+    margin-left: 73px;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 25px;
+}
+#btnApply {
+    margin-left: 20px;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 25px;
+}

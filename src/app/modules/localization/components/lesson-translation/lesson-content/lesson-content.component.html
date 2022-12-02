@@ -1,0 +1,44 @@
+<!-- 
+<div *ngIf="lessoncode && countrycode && languagecode">
+  <ul>
+    <li>Lesson Code : {{lessoncode}}</li>
+    <li>Country Code : {{countrycode}}</li>
+    <li>Language Code : {{languagecode}}</li>
+  </ul>
+</div> 
+-->
+<div *ngIf="content && content.length>0 && isApplied;else loading" style="margin-top: -15px">
+
+  <div style="position: relative;top: 47px;left: -6px;" class="ng-tns-c35-34 ng-star-inserted">
+    <button (click)="toggle = !toggle;" class="ng-tns-c35-34" style="background: transparent; border: none;">
+      <img style="width: 25px;height: 20px;padding: 0px;margin-top: 2px;" src="./assets/img/down-arrow.svg" *ngIf="!toggle" title="Expand all" /> 
+      <img  style="width: 25px;height: 20px;padding: 0px;margin-top: 2px;" src="./assets/img/up-arrow.svg"  *ngIf="toggle" title="Collapse all"/> 
+    </button>
+    <button (click)="CopyAllWithDefault()" style="background: transparent; border: none;position: relative;left: -35px;top: 40px;font-size: 20px;" 
+            tooltip="Copy all default values from left">
+        <i class="material-icons">input</i>
+    </button>
+  </div>
+  <form [formGroup]="myform">
+    <div formArrayName="tasks" [@taskContentAnimation]="'in'">
+        <div *ngFor="let task of tasks;let taskIndex=index;">
+          <app-task-container [toggle]="toggle" [formmain]="myform" [parentForm]="task" [taskIndex]="taskIndex">Loading...</app-task-container>
+        </div>
+    </div>
+  </form>
+  <div>
+    <button id="btnUpdate" (click)="UpdateChanges(myform.value)">Save changes</button> 
+    <mat-spinner [diameter]="20" [value]="uploadpercentage" [mode]="determinate" style="float: left;position: relative;left: 240px;top: 35px;" *ngIf="saveInProgress"></mat-spinner>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div *ngIf="show" class="loadingdiv">
+      <mat-spinner [diameter]="20" [mode]="indeterminate" style="float: left;margin-right: 20px;top: -3px;"></mat-spinner>
+      <span>Loading please wait...</span>
+  </div>
+</ng-template>
+
+<div *ngIf="myform">
+  <pre>form value: <br>{{myform.value | json}}</pre>
+</div>

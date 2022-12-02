@@ -1,0 +1,27 @@
+.copy-value {
+    float: left;
+    padding: 10px;
+    font-size: 30px;
+}
+input, textarea {
+    width:47%;float: left;
+}
+textarea {
+    height: 150px;
+    border-radius: 2px;
+}
+input {
+    padding-bottom: 6px;
+}
+.defaultversion, .version {
+    overflow: auto;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 2px;
+    padding-bottom: 5px;
+}
+.version {
+    background: lightyellow;
+    color: black;
+}

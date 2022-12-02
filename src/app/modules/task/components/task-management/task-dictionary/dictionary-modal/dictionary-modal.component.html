@@ -1,0 +1,16 @@
+<div style="clear:both; text-align: center; width: 100%;padding:20px;" *ngIf="terms?.length>0; else noDataFoundContent">
+  <button (click)='onSave()'>Add terms</button>
+  <p-dataTable [immutable]=false [value]="this?.terms" [rows]="10" [paginator]="true" [pageLinks]="3" 
+  [rowsPerPageOptions]="[2,5,10,20]" selectionMode="multiple"
+  [(selection)]="selectedObjects">
+    <p-column  selectionMode="multiple"></p-column>
+    <p-column [style]="{'width':'75px'}" [styleClass]="'small-col'" field="term_id" header="Id" [sortable]="true" [filter]="true"></p-column>
+    <p-column field="term" header="Name" [sortable]="true" [filter]="true"></p-column>
+    <p-column field="selector" header="Description" [sortable]="true" [filter]="true"></p-column>
+  </p-dataTable>
+</div>
+<ng-template #noDataFoundContent>
+  <div style="clear:both;padding: 20px; width: 99%; border-radius: 10px; height:56px; border: 1px solid #777; text-align: center; margin:1vh;margin-bottom: 2vh;margin-top: 2vh;">
+      No terms found for this task. Please add the terms if required.
+  </div>
+</ng-template>

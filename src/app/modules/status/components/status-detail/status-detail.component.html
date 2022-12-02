@@ -1,0 +1,31 @@
+<!--
+    - status_id
+    - name
+    - description
+    - hexcode
+-->
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <nav class="nav-component nav-component-top">
+    <button type="submit" class="btn btn-save" [disabled]="form.invalid">
+        <span>Save Changes</span>
+    </button>
+    </nav>
+
+    <h1>Status Details</h1>
+    <ng-container *ngIf="this?.status">
+        <app-status-detail-form
+            [status]="this?.status"
+            [class]="'component component-form'"
+            [parent]="form">
+        </app-status-detail-form>
+    </ng-container>
+
+    <pre>{{ form.value | json }}</pre>
+
+    <nav class="nav-component">
+        <button type="submit" class="btn btn-save">
+            <span>Save Changes</span>
+        </button>
+    </nav>
+</form>

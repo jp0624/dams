@@ -1,0 +1,12 @@
+.copy-value {
+    float: left;
+    padding: 10px;
+    font-size: 30px;
+}
+.container {
+    overflow: auto;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 2px;
+}

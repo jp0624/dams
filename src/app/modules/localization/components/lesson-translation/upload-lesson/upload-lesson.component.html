@@ -1,0 +1,10 @@
+<div [ngClass]="{'visiblehidden': !(lessoncode && countrycode && languagecode)}">
+    <input type="file" #file placeholder="Upload file" accept=".xlsx,.txt" style="width:486px">
+    <mat-spinner [diameter]="20" [value]="uploadpercentage" [mode]="determinate" style="float: left;position: relative;left: 700px;top: 4px;" *ngIf="uploadpercentage>0"></mat-spinner>
+    <button id="btnUpload" (click)="selectFile()">Upload</button><button id="btnApply" (click)="applyContent()" [ngClass]="{'visiblehidden': !filePath}">Apply</button>
+    <div class='padding-top-20' *ngIf="uploadprogress">
+        {{uploadprogress}}
+    </div>
+</div>
+
+  

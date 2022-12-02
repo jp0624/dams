@@ -1,0 +1,37 @@
+<div class="master-div">
+        <h1 class="header" style="clear:both">Alert</h1>
+        <form novalidate [formGroup]="alertForm" #thisForm (submit)="onSubmit(alertForm.value)" novalidate>
+          <div class="container" >
+            <!-- type_id -->
+            <div>
+            <custom-input-with-validation [label]="'Name'" [showLabel]="false" [validators]="{required:'Name required', 'minlength': 'Minimum 5 characters required'}" >
+                <mat-form-field class="full-width">
+                <input inputRef matInput placeholder="Name*" formControlName="name" autocomplete="off" >
+                </mat-form-field>
+            </custom-input-with-validation>
+            </div>
+            <div>
+            <custom-input-with-validation [label]="'Description'" [showLabel]="false" >
+                <mat-form-field class="full-width">
+                    <input inputRef matInput placeholder="description" formControlName="description" type="text" autocomplete="off" >
+                </mat-form-field>
+            </custom-input-with-validation>
+            </div>
+            <div>
+            <custom-input-with-validation [label]="'Class'" [showLabel]="false" >
+                <mat-form-field class="full-width">
+                    <input inputRef matInput placeholder="Class" formControlName="class" type="text" autocomplete="off" >
+                </mat-form-field>
+            </custom-input-with-validation>
+            </div>
+            <div>
+                <mat-checkbox class="example-margin" formControlName="is_active">Active</mat-checkbox>
+            </div>
+          </div>
+          <div class='buttons'>
+              <input type="submit" id="btnSubmit" value="Submit" [disabled]="this.alertForm.invalid" />.
+              <input type="button" id="btnReset" value="Reset" (click)="onReset()" />
+              <a routerLink="/alert/list" routerLinkActive="active" class="back-link-green"> Back to List view </a>
+          </div>
+        </form>
+    </div>

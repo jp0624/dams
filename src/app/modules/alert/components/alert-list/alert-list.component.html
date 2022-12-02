@@ -1,0 +1,36 @@
+<div class="master-div">
+    <h1 class="header" style="clear:both">List of Alert</h1>
+    <div>
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th class='text-align-left'>Name</th>
+            <th class='text-align-left'>Description</th>
+            <th class='text-align-left'>Class</th>
+            <th class='text-align-left'>Active</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody [@rowState]="alerts.length">
+          <tr *ngFor="let alert of alerts; trackByFn">
+            <td class='text-align-center'>{{ alert.alert_id }}</td>
+            <td class='text-align-left'>{{ alert.name }}</td>
+            <td class='text-align-left'>{{ alert.description }}</td>
+            <td class='text-align-left'>{{ alert.class }}</td>
+            <td class='text-align-left'>{{ alert.is_active ? 'Yes' : 'No' }}</td>
+            <td class='text-align-center'>
+              <a [routerLink]="['/alert/', alert.alert_id]">
+                <i class="material-icons">edit</i>
+              </a>
+            </td>
+            <td class='text-align-center'>
+              <i class="material-icons" (click)='deleteLink(alert.alert_id)'>delete</i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

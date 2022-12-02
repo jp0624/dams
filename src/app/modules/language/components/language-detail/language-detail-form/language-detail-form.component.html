@@ -1,0 +1,27 @@
+<!--
+    - language_id
+    - name
+    - code
+-->
+
+<pre>{{ this?.language | json }}</pre>
+
+<div [formGroup]="parent">
+  <ul formGroupName="language" class="form form-standard" [ngClass]="{  'hasData': language}">
+    <input
+      type="hidden"
+      formControlName="language_id">
+    <li>
+      <label>Language Name:</label>
+      <input
+          type="text"
+          formControlName="name">
+    </li>
+    <li>
+      <label>Language Code:</label>
+      <input
+          type="text"
+          formControlName="code">
+    </li>
+  </ul>
+</div>

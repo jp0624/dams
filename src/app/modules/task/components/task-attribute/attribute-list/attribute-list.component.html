@@ -1,0 +1,50 @@
+<div>
+  <div style="float: left;">
+    <h1 _ngcontent-c14="">Task Type Content Options</h1>
+  </div>
+  <div style="float: right;font-size: 2vh;padding-top: 45px;"> 
+    <a [routerLink]="['/task/type/attrgroup/link']"> Edit </a>
+    <!--blog-->
+    <!-- <a  [routerLink]="['/task/type/attrgroup/link']" [queryParams]="{debug: true}" queryParamsHandling="merge"> Edit </a> -->
+  </div>
+  </div>
+
+  <nav class="dashboard modal" *ngIf="this?.type_groups">
+
+    <ng-container *ngIf="!this.listView">
+      <ul *ngFor="let group of this.type_groups">
+        <li>
+          <a (click)="createTaskGroup(task_id, group.link_id)">
+              <i class="material-icons">{{group.icon}}</i>
+              <span>{{group.name}}</span>
+          </a>
+        </li>
+      </ul>
+    </ng-container>
+
+
+    <ng-container *ngIf="this.listView">
+      <pre>{{this.type_groups | json}}</pre>
+      <ul *ngFor="let group_key of this.type_group_keys; let i of index">
+        
+        <h1>{{group_key}}</h1>
+          <li *ngFor="let group of this.type_groups[group_key] ">
+            <a >
+                <i class="material-icons">{{group.icon}}</i>
+                <span>{{group.name}}</span>
+            </a>
+          </li>
+      </ul>
+    </ng-container>
+
+  </nav>
+<!--
+  <app-dynamicTable
+    *ngIf="this?.type_groups"
+    [attr.db-table]="task"
+    [data]="this.type_groups"
+    [primary]="'link_id'"
+    [section]="'task/attr'"
+    [destination]="this?.destination">
+  </app-dynamicTable>
+-->

@@ -1,0 +1,62 @@
+<nav class="nav-component nav-component-modal nav-component-top">
+  <a *ngIf="this.file?.dir" class="btn btn-back" (click)="viewFolder(this.file.dir)">
+    <span>
+        <i class="material-icons">reply</i> 
+        View Folder
+    </span>
+  </a>
+  <a *ngIf="this?.modal" class="btn btn-save" (click)="selectFile(this.file)">
+    <span>
+        Select File 
+        <i class="material-icons">check_circle</i>
+    </span>
+  </a>
+</nav>
+<pre>{{ this?.file | json }}</pre>
+<h2>
+  {{ this.file?.dir + this.file?.name }}
+</h2>
+<figure class="component">
+  <ng-container [ngSwitch]="this.file?.xtn">
+      <ng-container *ngSwitchCase="'jpg'">
+        <!--this.globalService?.assetsurl-->
+        <img [src]="this.globalService?.assetsurl + this.file?.dir + this.file?.name" />
+      </ng-container>
+      <ng-container *ngSwitchCase="'jpeg'">
+        <!--this.globalService?.assetsurl-->
+        <img [src]="this.globalService?.assetsurl + this.file?.dir + this.file?.name" />
+      </ng-container>
+      <ng-container *ngSwitchCase="'png'">
+        <!--this.globalService?.assetsurl-->
+        <img [src]="this.globalService?.assetsurl + this.file?.dir + this.file?.name" />
+      </ng-container>
+      <ng-container *ngSwitchCase="'gif'">
+        <!--this.globalService?.assetsurl-->
+        <img [src]="this.globalService?.assetsurl + this.file?.dir + this.file?.name" />
+      </ng-container>
+      <ng-container *ngSwitchCase="'svg'">
+        <!--this.globalService?.assetsurl-->
+        <img [src]="this.globalService?.assetsurl + this.file?.dir + this.file?.name" />
+      </ng-container>
+      <ng-container *ngSwitchCase="'mp4'">
+        <video controls [src]="this.globalService?.assetsurl + this.file?.dir + this.file?.name"></video>
+      </ng-container>
+      
+      <ng-container *ngSwitchCase="'xlsx'">
+        <div class="file-icon">
+          <a [href]="this.globalService?.assetsurl + this.file?.dir + this.file?.name" class="btn btn-download">
+              <i class="material-icons">file_download</i>
+              <span>Download</span>
+          </a>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'xls'">
+        <div class="file-icon">
+          <i class="material-icons">text_format</i>
+        </div>
+      </ng-container>
+  </ng-container>
+</figure>
+<figcaption *ngIf="this?.file">
+  <app-dynamicList [data]="this?.file" [keys]="this?.keys"></app-dynamicList>
+</figcaption>

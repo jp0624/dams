@@ -1,0 +1,43 @@
+a.localize {
+    transition: all 150ms linear 0ms;
+    position: relative;
+    display: block;
+    color: #505050;
+    width: 100%;
+    float: left;
+    
+    width: 17.5%;
+    margin: 0 1% 0;
+    text-align: center;
+    transition: all 150ms linear 0ms;
+    border: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: all 150ms linear 0ms;
+    span {
+        padding: 5%;
+        font-size: 14px;
+    }
+}
+
+/*
+div {
+    float: left;
+    width: 100%;
+    padding: 0.25em;
+    border: 1px solid #a04848;
+    background: #efa7a7;
+
+    label {
+        color: #993838;
+    }
+    input {
+        border: 1px solid #a04848;
+        color: #993838;
+        background-color: #ffeded;
+    }
+}
+*/

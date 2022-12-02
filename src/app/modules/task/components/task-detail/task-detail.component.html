@@ -1,0 +1,73 @@
+<ng-container *ngIf="this?.task">
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+        <div>
+            <nav class="nav-component nav-component-top" *ngIf="this?.mode != 'local'">
+
+                <button type="submit" class="btn btn-save">
+                    <span>{{this.modal ? 'Add to Lesson' : 'Save Changes' }}</span>
+                </button>
+                <button *ngIf="this.task?.id && !this.modal" class="btn btn-localize" [routerLink]="['/localization/task/' + this.task.id + '/en']"
+                    routerLinkActive="active">
+                    <!--</button> (click)="localizeTask()">-->
+                    <span>Localize</span>
+                </button>
+
+            </nav>
+
+            <ng-container>
+                <h1 *ngIf="this?.mode != 'local'">Task Details</h1>
+                <ng-container *ngIf="this?.task && this?.mode != 'local'">
+                    <app-task-detail-form [task]="this.task" [class]="'component component-form'" [sts]="this.sts" [vhs]="this.vhs" [tts]="this.tts"
+                        [questions]="this.questions" [form]="this.taskForm" [formGroup]="this.taskForm.controls.taskMeta">
+                    </app-task-detail-form>
+                </ng-container>
+                -
+                <pre>{{ this.taskForm.value | json }}</pre>
+                <pre>{{ this.task | json }}</pre>
+
+                <ng-container *ngIf="(this.task?.id || this.tempTask?.id) && !this?.modal">
+                    <h1 *ngIf="this?.mode != 'local'">Task Content</h1>
+                    <!--
+                    <pre>{{ this?.lessons | json }}</pre>
+                    -->
+                    <nav class="nav-component" *ngIf="this?.mode != 'local'">
+                        <a (click)="this.modalService.showModal('task-content', this.task.id, this.task.type_id)" class="btn btn-standard">
+                            <span>Add Task Content</span>
+                        </a>
+                    </nav>
+                    <ng-container *ngIf="this?.task">
+                        <app-task-type [task]="this.task" [form]="this.taskForm" [formArray]="this.taskForm.controls.taskContent">
+                        </app-task-type>
+                    </ng-container>
+                    <nav class="nav-component" *ngIf="this?.mode != 'local'">
+                        <a (click)="this.modalService.showModal('task-content', this.task.id, this.task.type_id)" class="btn btn-standard">
+                            <span>Add Task Content</span>
+                        </a>
+                    </nav>
+                </ng-container>
+                <pre>{{ this.taskForm?.value | json }}</pre>
+
+                <ng-container *ngIf="(this.task?.id || this.tempTask?.id) && !this?.modal">
+                    <h1 *ngIf="this?.mode != 'local'">Dictionary Terms</h1>
+                    <pre>{{ this.taskTerms | json }}</pre>
+                    <ng-container *ngIf="this?.taskTerms">
+                        <app-task-term [terms]="this.taskTerms">
+                        </app-task-term>
+                    </ng-container>
+
+                    <nav class="nav-component" *ngIf="this?.mode != 'local'">
+                        <a (click)="this.modalService.showModal('dictionary', this.task.id, this.task.type_id)" class="btn btn-standard">
+                            <span>Add Dictionary Term</span>
+                        </a>
+                    </nav>
+                </ng-container>
+
+                <nav class="nav-component" *ngIf="this?.mode != 'local'">
+                    <button type="submit" class="btn btn-save">
+                        <span>{{this.modal ? 'Add to Lesson' : 'Save Changes' }}</span>
+                    </button>
+                </nav>
+            </ng-container>
+        </div>
+    </form>
+</ng-container>

@@ -1,0 +1,35 @@
+<div class="master-div">
+
+<h1 class="header" style="clear:both">Task type attribute group mapper</h1>
+<form novalidate (ngSubmit)="onSubmit()" [formGroup]="taskForm">
+  <div class="container" >
+
+      <div class='subtitle'>Task type</div>
+
+      <div class='selectList'>
+        <select id="tasktype" formControlName="type_id" (change)="onChange()">
+            <option [value]="0">Select</option>
+            <option *ngFor="let opt of taskTypes" [value]="opt?.type_id">{{opt.name}}</option>
+        </select>
+      </div>
+      
+      <div formArrayName="attr_groups" class="checkboxList">
+          <div *ngFor="let attr of formData.controls; let i=index;">
+              <div [formGroup]="taskForm.controls.attr_groups.controls[i]" style="clear:both;" >
+                <div style="float: left;">
+                    <input type="checkbox" formControlName="checked" style="width: 20px; height: 20px;">
+                </div>
+                <div style="padding:6px; margin-left:30px;">
+                    <span>{{ attr.get('name').value }}</span></div>
+              </div>
+            </div>
+          <!-- <input type="checkbox" class='checkbox' [checked]="question?.value" (change)="question.value = !question.value" [formControlName]="question?.key" /> -->
+      </div>
+  </div>
+  <div class='buttons'>
+      <input type="submit" id="btnSubmit" value="Submit" [disabled]="this.taskForm.value.type_id == 0 || !validateSelectCountCheck()" />.
+      <input type="button" id="btnReset" value="Reset" (click)="afterFormSubmit([])" />
+  </div>
+</form>
+
+</div>

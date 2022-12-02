@@ -1,0 +1,45 @@
+.btn-excel-gen, .btn-publish, .btn-preview, .btn-publish-all{
+    position: absolute;
+    background: green;
+    color: white;
+    padding: 17px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 150ms linear 0ms;
+    &:hover { transform: translate(-0%,0) scale(1.085); }
+}
+.btn-publish-all{
+    right: 269px;
+}
+.btn-excel-gen {
+    right: 20px;
+}
+.btn-publish {
+    right: 169px;
+}
+.btn-preview {
+    right: 389px;
+    height: 51px;
+}
+
+.btn-preview i {
+    padding-left: 5px;
+    top: 2px;
+    position: relative;
+}
+.lessontitle h1 {
+    padding: 0px 0px 0px !important;
+}
+.title{
+    font-weight: bold;
+    text-decoration: underline;
+    padding-bottom: 20px;
+    padding-top: 40px;
+    color: maroon;
+    clear: both;
+}
+.extrapadtop {
+    padding-top: 90px;
+}

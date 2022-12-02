@@ -1,0 +1,43 @@
+<ng-container>
+  <ul [formGroup]="parent" class="component component-form">
+    <div formGroupName="localGroup">
+
+      <li>
+        <label>
+          <span>Country</span>
+        </label>
+        <select id="countryList"
+          formControlName="countryList"
+          *ngIf="this?.countryList"
+          (change)="selectCountry($event)">
+
+            <option>Select Country</option>
+            <option
+              *ngFor="let country of this.countryList, let i = index"
+              [ngValue]="country?.code">
+                {{ country.name }}
+            </option>
+
+        </select>
+      </li>
+      <li *ngIf="this.localService.country_code">
+        <label>
+          <span>Language</span>
+        </label>
+        <select
+          formControlName="languageList" id="languageList"
+          (change)="selectLanguage($event)">
+
+          <option>Select Language</option>
+          <option
+            *ngFor="let language of this?.languageList, let i = index"
+            [ngValue]="language?.code">
+              {{ language.name }}
+          </option>
+
+        </select>
+      </li>
+
+    </div>
+  </ul>
+</ng-container>

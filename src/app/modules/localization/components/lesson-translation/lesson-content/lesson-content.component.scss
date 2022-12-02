@@ -1,0 +1,23 @@
+form {
+    margin-top: 20px;
+    width: 95%;
+    position: relative;
+    left: 40px;
+}
+#btnUpdate {
+    padding: 15px 33px;
+    position: relative;
+    top: 20px;
+    left: 40px;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    &:hover { transform: translate(-0%,0) scale(1.085); }
+}
+.loadingdiv{
+    margin-top: 50px;
+    position: relative;
+    left: 40%;
+}

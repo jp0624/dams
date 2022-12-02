@@ -1,0 +1,24 @@
+<ng-container [ngSwitch]="this.mode">
+    <div *ngSwitchCase="'dashboard'">
+        <h1>Task Selection Type</h1>
+        <nav class="dashboard">
+          <ul>
+              <li>
+                  <a (click)="this.changeType('add')">
+                  <i class="material-icons">list</i>
+                  <span>Choose from Existing</span>
+                </a>
+              </li>
+              <li>
+                <a (click)="this.changeType('create')">
+                  <i class="material-icons">add_circle_outline</i>
+                  <span>Create New</span>
+                </a>
+              </li>
+          </ul>
+        </nav>
+    </div>
+    <app-task-detail *ngSwitchCase="'create'" [mode]="'create'" [modal]="true" [lesson_id]="this?.lesson_id"></app-task-detail>
+    <app-task-detail *ngSwitchCase="'edit'" [lesson_id]="this?.lesson_id" [modal]="true" [task_id]="this?.task_id"></app-task-detail>
+    <app-task-list *ngSwitchCase="'add'" (task_id)="changeType('edit', $event)" [destination]="'modal'" [modal]="true"></app-task-list>
+  </ng-container>

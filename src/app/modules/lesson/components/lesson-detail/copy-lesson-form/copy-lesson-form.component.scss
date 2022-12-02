@@ -1,0 +1,73 @@
+.buttonclose{
+    position: relative;
+    right: 0px;
+    left: 900px;
+    top: -16px;
+    border: none;
+    background: transparent;
+    font-size: 23px;
+}
+.copy-lesson-form {
+    min-width: 150px;
+    max-width: 1000px;
+    padding: 1%;
+    width: 100%;
+  }
+  .full-width {
+    width: 100%;
+  }
+
+  .errorMessage{
+    text-align:center;
+    font-size:12px;
+    color:red;
+  }
+  .savebutton, .savebutton:disabled{
+    background: green;
+    &:hover { transform: translate(-0%,0) scale(1); }
+  }
+  .savebutton:disabled{
+    color: white;
+  }
+
+ .btnWidth{
+  width: 200px;
+  margin-left: 20px;
+  cursor: hand;
+  cursor: pointer;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  transition: all 150ms linear 0ms;
+  &:hover { transform: translate(-0%,0) scale(1.085); }
+ }
+
+ a.CopyLink{
+  width: 200px;
+  margin-left: 20px;
+  background-color: #4a71a2;
+  color: #FFF;
+  float: right;
+  text-align: center;
+  border-radius: 5px;
+  line-height: 36px;
+  text-decoration: none;
+  font-size: 15px;
+  transition: all 150ms linear 0ms;
+  &:hover { transform: translate(-0%,0) scale(1.085); }
+ }
+
+ .loadingdiv{
+  position: absolute;
+    text-align:center;
+  z-index: 500;
+  top:40%;
+  left:40%;
+  font-size: 15px;
+  background-color:#FFF;
+}
+mat-spinner{
+  display: inline;
+  padding-right: 25px;  
+}

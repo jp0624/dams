@@ -1,0 +1,38 @@
+<!--
+<ng-container *ngIf="type === 'thead'">
+    <app-th *ngFor="let cell of data" [data]="cell"></app-th>
+</ng-container>
+
+<ng-container *ngIf="type === 'tbody'">
+    <app-td *ngFor="let key of keys" [data]="data[key]" [key]="key"></app-td>
+</ng-container>
+
+
+<ng-container [ngSwitch]="type">
+    <app-th *ngSwitchCase="'thead'" [data]="data"></app-th>
+    <app-td *ngSwitchCase="'tbody'" [data]="data"></app-td>
+</ng-container>
+-->
+<ng-container [ngSwitch]="type">
+
+    <tr *ngSwitchCase="'thead'">
+        <app-th *ngFor="let cell of data" [data]="cell"></app-th>
+    </tr>
+
+    <tr *ngSwitchCase="'tbody'" [ngClass]="{'clickable': this.primary, 'sortable': this.sortable}" [attr.primary]="this.data[this.primary]" >
+        <td class="func func-order func-order-up" (click)="changeOrder(this.data[this.primary], this.data.order, 'up')">
+            <i class="material-icons">keyboard_arrow_up</i>
+        </td>
+
+        <td class="func func-order func-order-down" (click)="changeOrder(this.data[this.primary], this.data.order, 'down')">
+            <i class="material-icons">keyboard_arrow_down</i>
+        </td>
+
+        <app-td *ngFor="let key of keys; let i = index" [data]="data[key]" [key]="key" (click)="this.primary ? viewThis(this.data[this.primary], this?.destination, i) : false"></app-td>
+
+        <td class="func func-delete" (click)="deleteLink(this?.linktable, this.primary, this.data[this.primary])">
+            <i class="material-icons">remove_circle</i>
+        </td>
+    </tr>
+
+</ng-container>

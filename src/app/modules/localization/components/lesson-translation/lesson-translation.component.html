@@ -1,0 +1,30 @@
+<div class="lessontitle">
+  <h1>Lesson content localization</h1>
+</div>
+<div>
+  <div>
+    <button class="btn-excel-gen" (click)="generateExcel()">Generate Excel</button>
+    <button (click)="publish()" class="btn btn-publish ng-star-inserted" type="button">
+      <span>Publish</span>
+    </button>
+    <button (click)="preview()" class="btn btn-preview ng-star-inserted" type="button">
+      <span>Preview</span>
+      <i class="material-icons">open_in_browser</i>
+    </button>
+    <button (click)="publishAll()" class="btn btn-publish-all ng-star-inserted" type="button">
+      <span>Publish All</span>
+    </button>
+  </div>
+  <div class='title extrapadtop'>Step 1: Search</div>
+  <app-basic-filters (onFilterChange)="filterChanged($event)">
+    Loading...
+  </app-basic-filters>
+  <div class='title'>Step 2: Upload the translation Excel file (optional)</div>
+  <app-upload-lesson [lessoncode]="lessoncode" [countrycode]="countrycode" [languagecode]="languagecode"  [vehiclecode]="vehiclecode"  [versioncode]="versioncode" (exceldata)="onExcelDate($event)">
+    Loading...
+  </app-upload-lesson>
+  <div class='title'>Step 3: Review, Alter and Save the content</div>
+  <app-lesson-content [lessoncode]="lessoncode" [countrycode]="countrycode" [languagecode]="languagecode" [vehiclecode]="vehiclecode" [versioncode]="versioncode" [exceldata]="excelarraydata"> 
+    Loading...
+  </app-lesson-content>
+</div>

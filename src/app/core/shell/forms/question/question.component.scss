@@ -1,0 +1,27 @@
+div {
+    &.error {
+        float: left;
+        width: 100%;
+        padding: 0.25em;
+        border: 1px solid #a04848;
+        background: #efa7a7;
+
+        label {
+            color: #993838;
+        }
+        input {
+            border: 1px solid #a04848;
+            color: #993838;
+            background-color: #ffeded;
+        }
+    }
+}
+.mat-slide-toggle-bar{
+    background: gray !important;
+}
+
+.checkbox {
+    width: 20px !important;
+    height: 20px !important;
+    margin-top: -10px;
+}

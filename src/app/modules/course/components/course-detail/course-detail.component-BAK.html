@@ -1,0 +1,17 @@
+<h1>{{this.courseService.courseSelected?.name}}</h1>
+<app-dynamicList
+*ngIf="this.courseService?.courseSelected"
+[data]="this.courseService?.courseSelected"
+[keys]="this.courseService?.courseSelectedKeys"
+[editable]="'true'"
+>
+</app-dynamicList>
+<h1>Lessons</h1>
+
+<app-dynamicTable
+    *ngIf="this.courseService?.courseLessonList"
+    [attr.db-table]="lesson"
+    [data]="this.courseService?.courseLessonList"
+    [primary]="'ID'"
+    [section]="'lesson'">
+</app-dynamicTable>

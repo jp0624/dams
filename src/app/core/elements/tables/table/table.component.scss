@@ -1,0 +1,291 @@
+table.old {
+    width: 94%;
+    margin-left: 3%;
+    display: block;
+    float: left;
+    border: 1px solid #ccc;
+    //box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    //border-radius: 5px;
+    //overflow: hidden;
+    
+    thead {
+        width: 100%;
+        display: block;
+        float: left;
+        //background-color: #ededed;
+        background-color: #505050;
+        color: #ededed;
+        tr {
+            th {
+                
+                font-weight: normal;
+            }
+        }
+    }
+    tbody {
+        width: 100%;
+        display: block;
+        float: left;
+        
+        app-tr {
+            &.first {
+                tr {
+                    &.sortable.clickable {
+                    
+                        td {
+                            &.func {
+                                &.func-order {
+                                    &.func-order-up {
+                                        display: none;
+                                    }
+                                    &.func-order-down {
+                                        height: 100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.last {
+                tr {
+                    &.sortable.clickable {
+                    
+                        td {
+                            &.func {
+                                &.func-order {
+                                    &.func-order-down {
+                                        display: none;
+                                    }
+                                    &.func-order-up {
+                                        height: 100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.odd {
+                tr {
+                    background-color: #f8f8f8;
+                }
+            }
+
+            tr {
+                background-color: #fff;
+                
+            }
+            &.selected {
+                tr {
+                    background-color: #4a71a2;
+                    color: #fff;
+                }
+                
+            }
+        }
+    }
+    app-tr {
+        position: relative;
+        width: 100%;
+        float: left;
+        
+    }
+    tr {
+        width: 100%;
+        display: block;
+        float: left;
+        padding: 5px;
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid transparent;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        
+
+        td, th {
+            display: block;
+            width: 25%;
+            float: left;
+            text-align: center;
+            margin: 0;
+            padding: 10px 0;
+            span:empty {
+                &:before {
+                    content: "\00a0";
+                }
+            }
+            /*
+            &:before {
+                float: left;
+                content: attr(data-label) ": ";
+            }
+            */
+        }
+    }
+    
+    &.cols-10 {
+        thead {
+            tr {
+                th {
+                    width:10%;
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    width:10%;
+                }
+            }
+        }
+    }
+    &.cols-9 {
+        thead {
+            tr {
+                th {
+                    width:11.1%;
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    width:11.1%;
+                }
+            }
+        }
+    }
+    &.cols-8 {
+        thead {
+            tr {
+                th {
+                    width:12.5%;
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    width:12.5%;
+                }
+            }
+        }
+    }
+    &.cols-7 {
+        thead {
+            tr {
+                th {
+                    width:14.2%;
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    width:14.2%;
+                }
+            }
+        }
+    }
+    &.cols-6 {
+        thead {
+            tr {
+                th {
+                    width:16.6%;
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    width:16.6%;
+                }
+            }
+        }
+    }
+    &.cols-5 {
+        thead {
+            tr {
+                th {
+                    width:20%;
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    width:20%;
+                }
+            }
+        }
+    }
+    &.cols-4 {
+        thead {
+            tr {
+                th {
+                    width:25%;
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    width:25%;
+                }
+            }
+        }
+    }
+    &.cols-3 {
+        thead {
+            tr {
+                th {
+                    width:33.3%;
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    width:33.3%;
+                }
+            }
+        }
+    }
+    &.cols-2 {
+        thead {
+            tr {
+                th {
+                    width:50%;
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    width:50%;
+                }
+            }
+        }
+    }
+    &.cols-1 {
+        thead {
+            tr {
+                th {
+                    width:100%;
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    width:100%;
+                }
+            }
+        }
+    }
+}
+form {
+    float: left;
+    clear: both;
+}

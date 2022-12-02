@@ -1,0 +1,4 @@
+<ng-container [ngSwitch]="this.mode">
+  <app-media-detail *ngSwitchCase="'file'" [modal]="true" (mode)="changeMode('folder', $event)" [media]="this.media" ></app-media-detail>
+  <app-media-list *ngSwitchCase="'folder'" [modal]="true" (mode)="changeMode('file', $event)"></app-media-list>
+</ng-container>

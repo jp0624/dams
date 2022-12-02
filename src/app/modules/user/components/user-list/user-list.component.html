@@ -1,0 +1,10 @@
+<h1>List of Users</h1>
+<div id="UserList">
+<p-dataTable [value]="this?.users" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" (onRowSelect)="onRowSelect($event)" selectionMode="single">
+    <p-column field="user_id" header="User Id" [sortable]="true" [filter]="true"></p-column>
+    <p-column field="name" header="Name" [sortable]="true" [filter]="true"></p-column>
+    <p-column field="user_type" header="User Type" [sortable]="true" [filter]="true"></p-column>
+    <p-column field="email" header="Email" [sortable]="true" [filter]="true"></p-column>
+    <p-column field="group_id" header="Group ID" [sortable]="true" [filter]="true"></p-column>
+  </p-dataTable>
+</div>

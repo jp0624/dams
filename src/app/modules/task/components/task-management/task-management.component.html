@@ -1,0 +1,14 @@
+<!--Disable the tab content transition [@.disabled]="true" -->
+<div style="background: white; min-height: 800px;">
+    <mat-tab-group>
+        <mat-tab label="Task Info">
+            <app-task-info [task]="task" [status]="status" [tasktype]="tasktype" [locktype]="locktype">Loading</app-task-info>
+        </mat-tab>
+        <mat-tab label="Task Content">
+            <app-task-content-container [groups]="group" [taskid]="taskid" [tasktypeid]="task.type_id">Loading...</app-task-content-container>
+        </mat-tab>
+        <mat-tab label="Task Dictionary">
+            <app-task-dictionary [dictionary]="dictionary"> Loading... </app-task-dictionary>
+        </mat-tab>
+    </mat-tab-group>
+</div>

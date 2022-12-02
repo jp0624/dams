@@ -1,0 +1,40 @@
+<div [formGroup]="parentForm">
+  <!-- 
+  <input formControlName="name" />
+  <input formControlName="contentid" />
+  <input formControlName="value" />
+  <input formControlName="translationvalue" />
+  <input formControlName="placeholder" /> 
+  -->
+  <div style="clear:both" *ngIf="this.parentForm.controls['element'].value === 'input' || this.parentForm.controls['element'].value === 'textarea'"> {{ this.parentForm.controls['label'].value }}  <span *ngIf="this.parentForm.controls['version_id'].value>1">({{this.parentForm.controls['version_name'].value}})</span> ({{ this.parentForm.controls['contentid'].value }}) </div> 
+  <div style="clear:both" [ngClass]="this.parentForm.controls['version_id'].value > 1 ? 'version' : 'defaultversion'"> 
+    <ng-container *ngIf="this.parentForm.controls['element'].value === 'input'">
+        <input formControlName="value" readonly />
+    </ng-container>
+    <ng-container *ngIf="this.parentForm.controls['element'].value === 'textarea'">
+        <textarea formControlName="value" placeholder="{{this.parentForm.controls['placeholder'].value}}" readonly> </textarea>
+    </ng-container>
+    <ng-container *ngIf="this.parentForm.controls['element'].value === 'input' && this.parentForm.controls['type'].value !== 'class' && this.parentForm.controls['type'].value !== 'css' && this.parentForm.controls['type'].value !== 'html' && this.parentForm.controls['type'].value !== 'code'">
+      <a (click)="copyValue(this.parentForm)" class="copy-value">
+        <i class="material-icons">input</i>
+      </a>
+      <input formControlName="translationvalue" placeholder="{{this.parentForm.controls['placeholder'].value}}" />
+    </ng-container>
+    <ng-container *ngIf="this.parentForm.controls['element'].value === 'textarea' && this.parentForm.controls['type'].value !== 'class' && this.parentForm.controls['type'].value !== 'css' && this.parentForm.controls['type'].value !== 'html' && this.parentForm.controls['type'].value !== 'code'">
+        <a (click)="copyValue(this.parentForm)" 
+          class="copy-value">
+          <i class="material-icons">input</i>
+        </a>
+        <textarea formControlName="translationvalue" placeholder="{{this.parentForm.controls['placeholder'].value}}" readonly> </textarea>
+    </ng-container>
+  </div>
+  <!-- 
+  <input formControlName="label" />
+  <input formControlName="defaultvalue" />
+  <input formControlName="type" />
+  <input formControlName="element" />
+  <input formControlName="altered" />
+  <input formControlName="translation_id" />
+  <input formControlName="isnew" /> 
+  -->
+</div>

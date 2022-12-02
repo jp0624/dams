@@ -1,0 +1,63 @@
+<ng-container>
+  <ul class="component component-form">
+  <li>
+      <label>
+        <button *ngIf="this.params.id && this?.translationDoc" type="button" (click)="this.applyTranslation()" class="btn btn-save">
+            <span>Apply</span>
+        </button>
+        <button *ngIf="this.params.id && !this?.translationDoc" type="button" (click)="this.modalService.showModal('media', this.translationControl)" class="btn btn-import">
+            <span>Select/Upload Translation</span>
+            <i class="material-icons">assignment_returned</i>
+        </button>
+        <button *ngIf="this.params.id && this?.translationDoc" type="button" (click)="this.modalService.showModal('media', this.translationControl)" class="btn btn-import">
+            <span>Change</span>
+            <i class="material-icons">settings</i>
+        </button>
+      <!--  
+        <button *ngIf="(this.params.type === 'course' || this.params.type === 'lesson') && this.params.id && this?.translationDoc" type="button" (click)="this.applyTranslation()" class="btn btn-save">
+          <span>Apply</span>
+        </button>
+        <button *ngIf="(this.params.type === 'course' || this.params.type === 'lesson') && this.params.id && !this?.translationDoc" type="button" (click)="this.modalService.showModal('media', this.translationControl)" class="btn btn-import">
+            <span>Select/Upload Translation</span>
+            <i class="material-icons">assignment_returned</i>
+        </button>
+        <button *ngIf="(this.params.type === 'course' || this.params.type === 'lesson') && this.params.id && this?.translationDoc" type="button" (click)="this.modalService.showModal('media', this.translationControl)" class="btn btn-import">
+            <span>Change</span>
+            <i class="material-icons">settings</i>
+        </button>
+      -->
+      </label>
+      <input
+      disabled="true"
+        [value]="this?.translationDoc"
+        placeholder="Select Translation File"
+        formControlName="'translation-xlsx'"
+        />
+    </li>
+  </ul>
+
+  <app-form-course
+    *ngIf="this.damData?.courseId"
+    [parent]="this?.parent"
+    [params]="this?.params"
+    [damData]="this?.damData"
+    >
+  </app-form-course>
+  <app-form-lesson
+    *ngIf="this.damData.lessonId && !this.damData.courseId"
+    [parent]="this?.parent"
+    [params]="this?.params"
+    [damData]="this?.damData"
+    >
+  </app-form-lesson>
+  <app-form-task
+    *ngIf="this.damData.taskId && !this.damData.lessonId && !this.damData.courseId"
+    [parent]="this?.parent"
+    [params]="this?.params"
+    [damData]="this?.damData"
+    >
+  </app-form-task>
+  <pre>============== ( DAM DATA ) ==============</pre>
+  <pre>{{ this?.damData | json }}</pre>
+  <pre>========================================</pre>
+</ng-container>
